@@ -1,0 +1,180 @@
+---
+lang: es 
+title: "UNIDAD CENTINELA DE INFECCIÓN RESPIRATORIA AGUDA GRAVE (UC-IRAG)"
+subtitle: "Hospital Señor del Milagro – Provincia de Salta"
+date: "`r Sys.Date()`"
+format:
+  html: 
+    embed-resources: true
+    author: 
+      - name: Dr.Adrian Edelcopp
+      - name: Lic.Natalia Pastrana
+    toc: true
+    toc-title: "ÍNDICE"
+    toc-depth: 3
+    toc-location: left
+    css: CSS/estilo.css
+    theme: cerulean
+editor: visual
+reference-location: margin
+citation-location: margin
+execute: 
+  warning: false
+  message: false
+smooth-scroll: true
+code-copy: true
+---
+
+### INTRODUCCIÓN
+
+Las infecciones respiratorias agudas (IRAs) constituyen una causa relevante de morbimortalidad, especialmente en niños menores de cinco años, adultos mayores y personas con enfermedades crónicas o inmunosupresión.
+
+La vigilancia de virus respiratorios con potencial epidémico y pandémico —como SARS-CoV-2, influenza y virus sincicial respiratorio (VSR)— resulta fundamental para caracterizar la situación epidemiológica, identificar eventos inusuales y orientar la implementación de medidas de prevención y control.
+
+En la República Argentina, la estrategia de vigilancia de IRAs se estructura en tres componentes, entre los cuales se destaca la vigilancia centinela. Esta última permite recolectar datos de manera sistemática y oportuna en un número limitado de establecimientos, seleccionados bajo criterios predefinidos.
+
+La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha estrategia viene implementándose desde la Semana Epidemiológica (SE) 18 del año 2024 en dos instituciones de referencia: el **Hospital Señor del Milagro**, ubicado en la ciudad de Salta, y el **Hospital San Vicente de Paul,** ubicado en la ciudad de Orán. **(Mapa N° 1)**
+
+```{r}
+#| label: LIBRERIAS
+#| message: false 
+#| echo: false
+#| results: 'hide'
+#| warning: false
+
+source("IMPORTAR BASE DE DATOS.R")
+source("EXPLORACION BASE Y NUEVO DATAFRAME.R")
+source("TEXTO_ENRIQUECIDO.R")
+```
+
+###### MAPA 1. Geolocalización de los efectores pertenecientes a la Red Nacional de UC-IRAG de la provincia de Salta.
+
+```{r}
+#| label: EFECTORES
+#| message: false 
+#| echo: false
+#| warning: false
+
+source("MAPA INTERACT DE EFECTORES.R")
+MAPA_EFECTORES
+```
+
+::: {style="text-align: right; font-size: 13px; color: #555; margin-top: 8px;"}
+<b>Fuente:</b> Elaboración propia en base a datos del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0) y jurisdicción
+:::
+
+### OBJETIVO DEL ANÁLISIS
+
+Describir el perfil clínico, epidemiológico y de diagnóstico etiológico de las infecciones respiratorias agudas graves (IRAG).
+
+### DEFINICIONES DE CASO
+
+-   **Infección Respiratoria Aguda Grave (IRAG):** Paciente de cualquier edad con infección respiratoria aguda con:
+
+    -   Fiebre referida o constatada \>= 38°C; y
+    -   Tos; y
+    -   Inicio del cuadro en los 10 días precedentes; y
+    -   Requerimiento de internación por criterio clínico
+
+-   **Infección Respiratoria Aguda Grave (IRAG) extendida en \< 2 años y \>= 60 años:**
+
+    -   Infección respiratoria: definida por tos o dificultad respiratoria; e
+    -   Inicio del cuadro en los 10 días precedentes; y
+    -   Requerimiento de internación por criterio clínico
+
+**En lactantes menores de 6 meses también considerar:**
+
+-   Apnea (cese temporal de la respiración por cualquier causa), o
+
+-   Sepsis (fiebre/hipotermia) y shock y gravemente enfermo sin causa aparente
+
+*\
+Para mayor información de la estrategia de vigilancia centinela de IRAG consultar en: <https://www.argentina.gob.ar/sites/default/files/guia-uc-irag-vff.pdf>*
+
+### SITUACIÓN EPIDEMIOLÓGICA
+
+Entre la semana epidemiológica (SE) `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) correspondieron a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
+
+El **Gráfico N° 1** muestra que, hasta la SE `r SE_MAX_2025` , se confirma el patrón estacional habitual, observandose un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 19 y SE 21 con un pico epidémico en la SE `r SEMANA_PICO` presentando un total de `r CASOS_SEMANA_PICO` casos .
+
+###### GRÁFICO 1. Casos de IRAG e IRAG EXTENDIDA por SE. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+
+```{r}
+#| label: CASOS-POR-SE
+#| message: false
+#| warning: false
+#| echo: false
+#| paged-print: false
+
+source("GRAFICO IRAG POR SE.R")
+GRAFICO_INTERACTIVO_SE
+
+
+```
+
+El mayor número de casos de IRAG se observa en el grupo de edad `r GRUPO_MAYOR_IRAG`, con `r GRUPO_CANTIDAD_IRAG` casos, mientras que en IRAG extendida, la mayor concentración de casos se encuentra en el grupo de edad `r GRUPO_MAYOR_IRAG_EXT`, con `r GRUPO_CANTIDAD_IRAG_EXT` casos.
+
+La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzando su valor más alto en el grupo de edad `r GRUPO_MAYOR_TASA`, con un valor de `r paste0(MAYOR_TASA_LETALIDAD, "%")`, lo que refleja un riesgo significativamente mayor de desenlace fatal en adultos mayores **(Gráfico N°2**).
+
+###### GRÁFICO 2. Casos de IRAG e IRAG EXTENDIDA y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+
+```{r}
+#| label: CASOS-POR-GRUPO-EDAD
+#| message: false
+#| warning: false
+#| echo: false
+#| paged-print: false
+
+source("CASOS DE IRAG POR GRUPO DE EDAD.R")
+GRAFICO_INTERACTIVO_EDAD
+```
+
+En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N° 3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_DETERMINACIONES_POSITIVAS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
+
+Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en la semana 19, mientras que el virus sincicial respiratorio (VSR) mostró mayor circulación entre las semanas 20 y 27. Los casos de COVID-19 se concentran en las últimas semanas.
+
+###### GRÁFICO 3. Número de determinaciones de Influenza, VSR y SARS-Cov-2 en casos notificados de IRAG/IRAG extendida, por SE. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+
+```{r}
+#| label: DETERMINACIONES-SE
+#| echo: false
+#| message: false
+#| warning: false
+
+source("DETECCIONES POR SEMANA.R")
+
+GRAFICO_INTERACTIVO_VIRUS
+
+```
+
+En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de los grupos de edad, especialmente entre los 40 y 64 años, mientras que el virus sincicial respiratorio (VSR) presentó mayor incidencia en personas de 50 o más años.
+
+###### GRÁFICO 4. Número de determinaciones positivas en casos notificados de IRAG/IRAG extendida por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_DETERMINACIONES_POSITIVAS`
+
+```{r}
+#| label: DETERMINACIONES-RESULTADO-GRUPO-EDAD
+#| message: false
+#| warning: false
+#| echo: false
+
+source("DETECCIONES POR GRUPO DE EDAD.R")
+GRAFICO_INTERACTIVO_VIRUS_EDAD
+```
+
+En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, diabetes y VIH, afectando a más del 10% de los casos. Las enfermedades respiratorias crónicas también tuvieron una representación significativa. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
+
+###### TABLA 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+
+```{r}
+#| label: CASOS-COMORBILIDADES
+#| message: false
+#| warning: false
+#| echo: false
+
+
+source("COMORBILIDADES.R")
+
+TABLA_COMORB_GT
+```
+
+###### 
