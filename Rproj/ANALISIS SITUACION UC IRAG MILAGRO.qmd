@@ -7,13 +7,13 @@ format:
   html: 
     embed-resources: true
     author: 
-      - name: Dr.Adrian Edelcopp
-      - name: Lic.Natalia Pastrana
+      - name: "Dr. Adrián Edelcopp"
+      - name: "Lic. Natalia Pastrana"
     toc: true
     toc-title: "ÍNDICE"
     toc-depth: 3
     toc-location: left
-    css: CSS/estilo.css
+    css: "C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/CSS/estilo.css"
     theme: cerulean
 editor: visual
 reference-location: margin
@@ -42,9 +42,9 @@ La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha est
 #| results: 'hide'
 #| warning: false
 
-source("IMPORTAR BASE DE DATOS.R")
-source("EXPLORACION BASE Y NUEVO DATAFRAME.R")
-source("TEXTO_ENRIQUECIDO.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/IMPORTAR BASE DE DATOS.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/EXPLORACION BASE Y NUEVO DATAFRAME.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/TEXTO_ENRIQUECIDO.R")
 ```
 
 ###### MAPA 1. Geolocalización de los efectores pertenecientes a la Red Nacional de UC-IRAG de la provincia de Salta.
@@ -55,7 +55,7 @@ source("TEXTO_ENRIQUECIDO.R")
 #| echo: false
 #| warning: false
 
-source("MAPA INTERACT DE EFECTORES.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/MAPA INTERACT DE EFECTORES.R")
 MAPA_EFECTORES
 ```
 
@@ -106,7 +106,7 @@ El **Gráfico N° 1** muestra que, hasta la SE `r SE_MAX_2025` , se confirma el 
 #| echo: false
 #| paged-print: false
 
-source("GRAFICO IRAG POR SE.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO IRAG POR SE.R")
 GRAFICO_INTERACTIVO_SE
 
 
@@ -125,7 +125,7 @@ La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzand
 #| echo: false
 #| paged-print: false
 
-source("CASOS DE IRAG POR GRUPO DE EDAD.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/CASOS DE IRAG POR GRUPO DE EDAD.R")
 GRAFICO_INTERACTIVO_EDAD
 ```
 
@@ -141,7 +141,7 @@ Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en
 #| message: false
 #| warning: false
 
-source("DETECCIONES POR SEMANA.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR SEMANA.R")
 
 GRAFICO_INTERACTIVO_VIRUS
 
@@ -157,7 +157,7 @@ En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de
 #| warning: false
 #| echo: false
 
-source("DETECCIONES POR GRUPO DE EDAD.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR GRUPO DE EDAD.R")
 GRAFICO_INTERACTIVO_VIRUS_EDAD
 ```
 
@@ -172,7 +172,7 @@ En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, repre
 #| echo: false
 
 
-source("COMORBILIDADES.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/COMORBILIDADES.R")
 
 TABLA_COMORB_GT
 ```

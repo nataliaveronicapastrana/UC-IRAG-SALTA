@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------
 # CARGAR LISTADO DE EFECTORES
 # ------------------------------------------------------------------------
-LISTADO_EFECTORES <- read_excel("EFECTORES.xlsx")
+LISTADO_EFECTORES <- read_excel("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/EFECTORES.xlsx")
 
 # Separar coordenadas en latitud y longitud
 LISTADO_EFECTORES <- LISTADO_EFECTORES %>%

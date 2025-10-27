@@ -112,9 +112,9 @@ body::before {
   position: fixed;
   top: 3px;
   left: 10px;
-  width: 200px;       
+  width: 250px;       
   height: 100px;       /* altura ajustable */
-  background-image: url("CSS/logo_ucirag.png"); /* ruta relativa desde el HTML */
+  background-image: url("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/CSS/logo_ucirag.png"); /* ruta relativa desde el HTML */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left top;
