@@ -28,3 +28,16 @@ DATA_UC_IRAG <- read_delim("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG H
 View(DATA_UC_IRAG)
 
 
+
+UC_IRAG_AGRUPADA<- read_excel("~/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/UC_IRAG_AGRUPADA_HSM.xlsx", 
+                                   col_types = c("text", "numeric", "numeric", 
+                                                 "text", "text", "text", "text", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric", "numeric", 
+                                                 "numeric", "numeric"))
+View(UC_IRAG_AGRUPADA)
+
