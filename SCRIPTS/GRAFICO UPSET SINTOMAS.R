@@ -62,7 +62,7 @@ GRAFICO_UPSET_SINTOMAS <- upset(
   data = base_sintomas_filtrados, #base de datos 
   intersect = variables_sintomas, #variables que se cruzan para ver intersecciones
   min_size = 2,
-  max_degree= 5,
+  max_degree= 4,
   name = "Signos y síntomas", #nombre del eje horizontal del gráfico
   base_annotations = list(
     'Intersecciones' = intersection_size( #nombre del eje vertical del gráfico
