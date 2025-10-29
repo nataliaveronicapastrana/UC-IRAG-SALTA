@@ -2,14 +2,6 @@
 #                        🛑   GRÁFICOS UPSET PARA COMORBILIDADES Y SÍNTOMAS 
 #-----------------------------------------------------------------------------------
 
-
-#Instalo paquetes
-install.packages("devtools")
-devtools::install_github("krassowski/complex-upset")
-
-library(tidyverse)
-library(ComplexUpset)
-
 #-----------------------------------------------------------------------------------
 #Selecciono registros solo con resultado positivo para al menos una determinacion
 #-----------------------------------------------------------------------------------
@@ -41,7 +33,7 @@ comorbilidades <- c(
   "ENF_NEUROLOGICA_CRONICA", "ENF_HEPATICA", "HIPERTENSION", "ENF_CEREBROVASCULAR",
   "ENF_NEUROMUSCULAR", "DISCAPACIDAD_INTELECTUAL", "ENF_CARDIACA", "ENF_REUMATOLOGICA",
   "DBP", "ASPIRINA", "ENF_RENAL", "OBESIDAD", "PREMATURIDAD_MEN33SG",
-  "PREMATURIDAD_33A36SG", "RN_TERMINO", "INMUNOCOMPROMETIDO_OTRAS_CAUSAS", "S_DOWN",
+  "PREMATURIDAD_33A36SG", "INMUNOCOMPROMETIDO_OTRAS_CAUSAS", "S_DOWN",
   "FUMADOR", "OTRAS_COMORBILIDADES", "SIN_COMORBILIDADES"
 )
 
@@ -92,10 +84,10 @@ variables_comorbilidades <- colnames(base_comorbilidades_filtradas)[-1]
 #5- Grafico upset
 #--------------------------------------------------------------------------------------------------
 
-grafico_upset_comorbilidades <- upset(
+GRAFICO_UPSET_COMORBILIDADES<- upset(
   data = base_comorbilidades_filtradas, #base de datos 
   intersect = variables_comorbilidades,#variables que se cruzan para ver intersecciones
-  #min_size = 2,
+  min_size = 2,
   name = "Comorbilidades", #nombre del eje horizontal del gráfico
   base_annotations = list(
     'Intersecciones' = intersection_size( #nombre del eje vertical del gráfico
@@ -119,7 +111,7 @@ grafico_upset_comorbilidades <- upset(
 
 #Gráfico
 
-grafico_upset_comorbilidades
+GRAFICO_UPSET_COMORBILIDADES
 
 #-----------------------------------------------------------------------------------
 #                          🛑 ANALISIS SIGNOS Y SINTOMAS
@@ -181,10 +173,10 @@ variables_sintomas <- colnames(base_sintomas_filtrados)[-1]
 #5- Grafico upset
 #--------------------------------------------------------------------------------------------------
 
-grafico_upset_sintomas <- upset(
+GRAFICO_UPSET_SINTOMAS <- upset(
   data = base_sintomas_filtrados, #base de datos 
   intersect = variables_sintomas, #variables que se cruzan para ver intersecciones
-  #min_size = 2,
+  min_size = 2,
   max_degree= 5,
   name = "Signos y síntomas", #nombre del eje horizontal del gráfico
   base_annotations = list(
@@ -208,5 +200,4 @@ grafico_upset_sintomas <- upset(
 )
 
 #Gráfico
-grafico_upset_sintomas
-
+GRAFICO_UPSET_SINTOMAS
