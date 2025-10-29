@@ -44,6 +44,7 @@ La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha est
 
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/IMPORTAR BASE DE DATOS.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/EXPLORACION BASE Y NUEVO DATAFRAME.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/BASE AGRUPADA NUEVO DATAFRAME.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/TEXTO_ENRIQUECIDO.R")
 ```
 
@@ -177,4 +178,40 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 TABLA_COMORB_GT
 ```
 
-###### 
+###### GRAFICO N° 5.  Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE /2025 hasta SE /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=72
+
+```{r}
+#| label: PROPORCION IRAG-IRAG EXTENDIDA-INTERNADOS
+#| message: false
+#| warning: false
+#| echo: false
+
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG E IRAG EXTENDIDA DEL TOTAL DE INTERNADOS.R")
+
+GRAFICO_IRAG_INTERNADOS
+```
+
+```{r}
+#| label: PROPORCION IRAG UCI-IRAG EXTENDIDA UCI-INTERNADOS UCI
+#| message: false
+#| warning: false
+#| echo: false
+
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG UCI E IRAG EXTENDIDA UCI DEL TOTAL DE INTERNADOS UCI.R")
+
+GRAFICO_IRAG_INTERNADOS_UCI
+```
+
+```{r}
+#| label: DEFUNCIONES IRAG-IRAG EXTENDIDA-DEFUNCIONES TOTALES
+#| message: false
+#| warning: false
+#| echo: false
+
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DEFUNCIONES IRAG, IRAG EXTENDIDA Y POR OTRAS CAUSAS.R")
+
+GRAFICO_IRAG_DEFUNCIONES
+```
