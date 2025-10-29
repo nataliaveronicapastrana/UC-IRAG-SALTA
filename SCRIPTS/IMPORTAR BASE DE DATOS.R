@@ -29,7 +29,7 @@ View(DATA_UC_IRAG)
 
 
 
-UC_IRAG_AGRUPADA<- read_excel("~/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/UC_IRAG_AGRUPADA_HSM.xlsx", 
+DATA_UC_IRAG_AGRUPADA<- read_excel("~/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/UC_IRAG_AGRUPADA_HSM.xlsx", 
                                    col_types = c("text", "numeric", "numeric", 
                                                  "text", "text", "text", "text", "numeric", 
                                                  "numeric", "numeric", "numeric", 
@@ -39,5 +39,5 @@ UC_IRAG_AGRUPADA<- read_excel("~/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEM
                                                  "numeric", "numeric", "numeric", 
                                                  "numeric", "numeric", "numeric", 
                                                  "numeric", "numeric"))
-View(UC_IRAG_AGRUPADA)
+View(DATA_UC_IRAG_AGRUPADA)
 
