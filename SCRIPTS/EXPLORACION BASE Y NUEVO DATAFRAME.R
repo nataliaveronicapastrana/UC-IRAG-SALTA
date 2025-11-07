@@ -1,6 +1,6 @@
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # EXPLORACION DE LA BASE DE DATOS
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 colnames(DATA_UC_IRAG) #ver los nombres de las columnas de la base
 
@@ -24,16 +24,18 @@ sum(is.na(DATA_UC_IRAG$CUIDADO_INTENSIVO))#ver cuantos NA hay
 
 sum(is.na(DATA_UC_IRAG$FALLECIDO))#ver cuantos NA hay
 
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LIMPIEZA DE BASE DE DATOS-NUEVO DATAFRAME
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 #dataframe con las variables a utilizar
 
 DATA_UC_LISTA <- DATA_UC_IRAG %>%
-  select(CLASIFICACION_MANUAL,ESTABLECIMIENTO_INTERNACION, FECHA_MINIMA,FECHA_INTERNACION, SEPI_MIN_INTERNACION, ANIO_MIN_INTERNACION, 
+  select(CLASIFICACION_MANUAL,ESTABLECIMIENTO_INTERNACION, FECHA_MINIMA,
+         FECHA_INTERNACION, SEPI_MIN_INTERNACION, ANIO_MIN_INTERNACION, 
          EDAD_UC_IRAG, CUIDADO_INTENSIVO, INFLUENZA_FINAL, COVID_19_FINAL, 
-         VSR_FINAL, PRESENCIA_COMORBILIDADES, IDEVENTOCASO,  BAJO_PESO_NACIMIENTO, ASMA, DIABETES, TUBERCULOSIS,
+         VSR_FINAL, PRESENCIA_COMORBILIDADES, IDEVENTOCASO,  
+         BAJO_PESO_NACIMIENTO, ASMA, DIABETES, TUBERCULOSIS,
          ENF_RESPIRATORIA, CARDIOPATIA_CONGENITA, VIH, ASPLENIA,
          DESNUTRICION, CANCER, TRASPLANTADO, BRONQUIOLITIS_PREVIA,
          EMBARAZO_PUERPERIO, EMBARAZO_COMORBILIDAD, ENF_NEUROLOGICA_CRONICA,
@@ -41,7 +43,8 @@ DATA_UC_LISTA <- DATA_UC_IRAG %>%
          DISCAPACIDAD_INTELECTUAL, ENF_CARDIACA, ENF_REUMATOLOGICA, DBP,
          ASPIRINA, ENF_RENAL, OBESIDAD, PREMATURIDAD_MEN33SG,
          PREMATURIDAD_33A36SG, INMUNOCOMPROMETIDO_OTRAS_CAUSAS,
-         S_DOWN, FUMADOR, OTRAS_COMORBILIDADES, PRESENCIA_COMORBILIDADES, SIN_COMORBILIDADES, FALLECIDO, DOLOR_TORACICO, DOLOR_MUSCULAR, 
+         S_DOWN, FUMADOR, OTRAS_COMORBILIDADES, PRESENCIA_COMORBILIDADES, 
+         SIN_COMORBILIDADES, FALLECIDO, DOLOR_TORACICO, DOLOR_MUSCULAR, 
          DOLOR_ABDOMINAL, VOMITO, DIARREA,
          RECHAZO_ALIMENTO, TIRAJE, TOS, FIEBRE_MAY_38, FIEBRE_MENOR_38,
          SIN_FIEBRE, DISNEA, DOLOR_GARGANTA, RINITIS, INYECCION_CONJUNTIVAL,
@@ -49,16 +52,7 @@ DATA_UC_LISTA <- DATA_UC_IRAG %>%
          AGEUSIA, ANOSMIA, DOLOR_DE_CABEZA, MALESTAR_GENERAL, CONFUSION,
          IRRITABILIDAD, CONVULSIONES, TAQUIPNEA) %>%
   filter(
-    ANIO_MIN_INTERNACION == "2025",
-    !EDAD_UC_IRAG %in% c("02 a 04 Años", "12 a 23 Meses", "0 a 2 Meses")
-  )
-
-#Correccion de la variable establecimiento_internacion
-
-DATA_UC_LISTA$ESTABLECIMIENTO_INTERNACION <- 
-  ifelse(DATA_UC_LISTA$ESTABLECIMIENTO_INTERNACION == "HOSPITAL MILITAR SALTA",
-         "HOSPITAL SEÑOR DEL MILAGRO",
-         DATA_UC_LISTA$ESTABLECIMIENTO_INTERNACION)
+    ANIO_MIN_INTERNACION == "2025", CLASIFICACION_MANUAL != "Caso invalidado por epidemiología")
 
 # Verificar cuantos valores faltantes hay
 

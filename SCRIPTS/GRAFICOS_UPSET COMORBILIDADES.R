@@ -84,30 +84,34 @@ variables_comorbilidades <- colnames(base_comorbilidades_filtradas)[-1]
 #5- Grafico upset
 #--------------------------------------------------------------------------------------------------
 
-GRAFICO_UPSET_COMORBILIDADES<- upset(
-  data = base_comorbilidades_filtradas, #base de datos 
-  intersect = variables_comorbilidades,#variables que se cruzan para ver intersecciones
-  min_size = 2,
-  name = "Comorbilidades", #nombre del eje horizontal del gráfico
+GRAFICO_UPSET_COMORBILIDADES <- upset(
+  data = base_comorbilidades_filtradas, 
+  intersect = variables_comorbilidades,
+  min_size = 2, #tamaño minimo de interseccion
+  name = "Comorbilidades",
   base_annotations = list(
-    'Intersecciones' = intersection_size( #nombre del eje vertical del gráfico
-      mapping = aes(),   
-      fill = "#9467BD",  # color de relleno de las barras
-      color = "black",   # color del borde de las barras
-      text = list(size = 4))),
-  
-  themes =  upset_modify_themes( #modifica la estética de componentes específicos del gráfico
+    'Intersecciones' = intersection_size(
+      mapping = aes(),
+      fill = "#9467BD",
+      color = "black",
+      text = list(size = 4)
+    )
+  ),
+  themes = upset_modify_themes(
     list(
       'intersections_matrix' = theme(
-        axis.text.y = element_text(size = 8),  # etiquetas del eje Y
-        axis.title.x = element_text(size = 8)  # etiquetas del eje x
+        axis.text.y = element_text(size = 8),
+        axis.title.x = element_text(size = 8)
       ),
       'overall_sizes' = theme(
-        axis.text.x = element_text(angle = 90, size = 8) #tamaño y rotación del gráfico de barras horizontales
-      ))
+        axis.text.x = element_text(angle = 90, size = 8)
+      )
+    )
   )
-  
-)
+) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud SNVS 2.0
+  *Se excluyeron las combinaciones de comorbilidades con un único caso (n=1)") +
+  theme(plot.caption = element_text(size = 8, hjust = 0))
+
 
 #Gráfico
 

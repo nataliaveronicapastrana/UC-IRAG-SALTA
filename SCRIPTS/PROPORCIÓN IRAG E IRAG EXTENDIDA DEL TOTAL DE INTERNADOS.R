@@ -37,7 +37,7 @@ GRAFICO_IRAG_INTERNADOS <- highchart() %>%
   ) %>%
   # 3️⃣ Otros ingresos (arriba)
   hc_add_series(
-    name = "Otros ingresos",
+    name = "Otros causas",
     data = round(DATA_UC_IRAG_LISTA$prop_otros_internados, 2),
     color = "#C7C7C7",
     index = 0

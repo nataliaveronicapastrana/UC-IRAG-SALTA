@@ -1,6 +1,6 @@
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # MODIFICACION BASE DE DATOS AGRUPADA: RENOMBRAR COLUMNAS
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # Vector con los nombres originales (como aparecen en tu dataframe)
 originales <- c("0 a 2 m", "3 a 5 m", "6 a 11 m", "12 a 23 m",
@@ -26,14 +26,15 @@ DATA_UC_IRAG_AGRUPADA <- DATA_UC_IRAG_AGRUPADA %>%
 colnames(DATA_UC_IRAG_AGRUPADA)
 
 
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # GENERACION DE NUEVO DATAFRAME
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 #dataframe con las variables a utilizar
 
 DATA_UC_IRAG_AGRUPADA <-DATA_UC_IRAG_AGRUPADA %>%
-  select(ANIO, SEMANA, ORIGEN, NOMBREEVENTOAGRP, edad_0_2m, edad_3_5m, edad_6_11m, edad_12_23m,
+  select(ANIO, SEMANA, ORIGEN, NOMBREEVENTOAGRP, edad_0_2m, edad_3_5m, edad_6_11m, 
+         edad_12_23m,
          edad_2_4a, edad_5_9a, edad_10_14a, edad_15_19a,
          edad_20_24a, edad_25_29a, edad_30_34a, edad_35_39a,
          edad_40_44a, edad_45_49a, edad_50_54a, edad_55_59a,
@@ -46,23 +47,26 @@ DATA_UC_IRAG_AGRUPADA <-DATA_UC_IRAG_AGRUPADA %>%
 
 View(DATA_UC_IRAG_AGRUPADA)
 
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # TRANSFORMACION DE DATAFRAME
-# ----------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 #Transformar formato ancho → largo
 
 DATA_UC_IRAG_LARGO <- DATA_UC_IRAG_AGRUPADA %>% 
-  pivot_longer( cols = starts_with("edad_"), names_to = "GRUPO_EDAD", values_to = "CASOS" )%>% mutate(CASOS = as.numeric(CASOS))
+  pivot_longer( cols = starts_with("edad_"), names_to = "GRUPO_EDAD", 
+                values_to = "CASOS" )%>% mutate(CASOS = as.numeric(CASOS))
 
 #Agrupar y sumar casos por tipo de evento, año y semana 
 
-DATA_UC_IRAG_AGREGADA<- DATA_UC_IRAG_LARGO %>% group_by(ANIO, SEMANA, NOMBREEVENTOAGRP) %>% 
+DATA_UC_IRAG_AGREGADA<- DATA_UC_IRAG_LARGO %>% group_by(ANIO, SEMANA, 
+                                                        NOMBREEVENTOAGRP) %>% 
   summarise(TOTAL_CASOS = sum(CASOS, na.rm = TRUE)) %>% ungroup()
 
 #Pasar filas de eventos a columnas
 
-DATA_UC_IRAG_LISTA <- DATA_UC_IRAG_AGREGADA %>% pivot_wider( names_from = NOMBREEVENTOAGRP, values_from = TOTAL_CASOS ) 
+DATA_UC_IRAG_LISTA <- DATA_UC_IRAG_AGREGADA %>% pivot_wider( 
+  names_from = NOMBREEVENTOAGRP, values_from = TOTAL_CASOS ) 
 names(DATA_UC_IRAG_LISTA) <- tolower(names(DATA_UC_IRAG_LISTA))
 
 #Calcular proporciones de interés

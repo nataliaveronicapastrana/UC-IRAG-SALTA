@@ -42,6 +42,8 @@ La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha est
 #| results: 'hide'
 #| warning: false
 
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/ACTIVACION DE PAQUETES.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/IMPORTAR BASE DE DATOS.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/EXPLORACION BASE Y NUEVO DATAFRAME.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/BASE AGRUPADA NUEVO DATAFRAME.R")
@@ -94,11 +96,11 @@ Para mayor información de la estrategia de vigilancia centinela de IRAG consult
 
 ### SITUACIÓN EPIDEMIOLÓGICA
 
-Entre la semana epidemiológica (SE) `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) correspondieron a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
+Entre la semana epidemiológica (SE) `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) corresponden a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
 
-El **Gráfico N° 1** muestra que, hasta la SE `r SE_MAX_2025` , se confirma el patrón estacional habitual, observandose un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 19 y SE 21 con un pico epidémico en la SE `r SEMANA_PICO` presentando un total de `r CASOS_SEMANA_PICO` casos .
+El **Gráfico N° 1** se observa un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 14 y SE 23 con un pico en la SE `r SEMANA_PICO` en la cual se presentaron un total de `r CASOS_SEMANA_PICO` casos .
 
-###### GRÁFICO 1. Casos de IRAG e IRAG EXTENDIDA por SE. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+###### GRÁFICO 1. Casos de IRAG e IRAG EXTENDIDA por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
 ```{r}
 #| label: CASOS-POR-SE
@@ -108,14 +110,15 @@ El **Gráfico N° 1** muestra que, hasta la SE `r SE_MAX_2025` , se confirma el 
 #| paged-print: false
 
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO IRAG POR SE.R")
+
 GRAFICO_INTERACTIVO_SE
 
 
 ```
 
-El mayor número de casos de IRAG se observa en el grupo de edad `r GRUPO_MAYOR_IRAG`, con `r GRUPO_CANTIDAD_IRAG` casos, mientras que en IRAG extendida, la mayor concentración de casos se encuentra en el grupo de edad `r GRUPO_MAYOR_IRAG_EXT`, con `r GRUPO_CANTIDAD_IRAG_EXT` casos.
+El mayor número de casos de IRAG se observa en el grupo de `r GRUPO_MAYOR_IRAG`, con `r GRUPO_CANTIDAD_IRAG` casos, mientras que en IRAG extendida, la mayor concentración de casos se encuentra en el grupo de edad `r GRUPO_MAYOR_IRAG_EXT`, con `r GRUPO_CANTIDAD_IRAG_EXT` casos.
 
-La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzando su valor más alto en el grupo de edad `r GRUPO_MAYOR_TASA`, con un valor de `r paste0(MAYOR_TASA_LETALIDAD, "%")`, lo que refleja un riesgo significativamente mayor de desenlace fatal en adultos mayores **(Gráfico N°2**).
+La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzando su valor más alto en el grupo de edad `r GRUPO_MAYOR_TASA` (`r paste0(MAYOR_TASA_LETALIDAD, "%")`), lo que refleja un riesgo significativamente mayor de desenlace fatal en adultos mayores **(Gráfico N°2**).
 
 ###### GRÁFICO 2. Casos de IRAG e IRAG EXTENDIDA y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
@@ -130,7 +133,7 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 GRAFICO_INTERACTIVO_EDAD
 ```
 
-En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N° 3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_DETERMINACIONES_POSITIVAS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
+En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N° 3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
 
 Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en la semana 19, mientras que el virus sincicial respiratorio (VSR) mostró mayor circulación entre las semanas 20 y 27. Los casos de COVID-19 se concentran en las últimas semanas.
 
@@ -146,11 +149,12 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 
 GRAFICO_INTERACTIVO_VIRUS
 
+
 ```
 
-En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de los grupos de edad, especialmente entre los 40 y 64 años, mientras que el virus sincicial respiratorio (VSR) presentó mayor incidencia en personas de 50 o más años.
+En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de los grupos de edad, mientras que en el caso de virus sincicial respiratorio (VSR) presentó mayor incidencia en personas de 50 o más años.
 
-###### GRÁFICO 4. Número de determinaciones positivas en casos notificados de IRAG/IRAG extendida por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_DETERMINACIONES_POSITIVAS`
+###### GRÁFICO 4. Número de determinaciones positivas en casos notificados de IRAG/IRAG extendida por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS_POSITIVOS`
 
 ```{r}
 #| label: DETERMINACIONES-RESULTADO-GRUPO-EDAD
@@ -159,10 +163,27 @@ En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de
 #| echo: false
 
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR GRUPO DE EDAD.R")
+
 GRAFICO_INTERACTIVO_VIRUS_EDAD
 ```
 
-En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, diabetes y VIH, afectando a más del 10% de los casos. Las enfermedades respiratorias crónicas también tuvieron una representación significativa. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
+El **Gráfico N° 5** presenta la frecuencia y combinación de signos y síntomas reportados en los casos de IRAG e IRAG extendida. Se observa que el síntoma más frecuente fue la tos, seguido por fiebre ≥38°C, disnea y malestar general, conformando el núcleo clínico predominante del cuadro respiratorio. Respecto de las combinaciones sintomáticas, la asociación más común estuvo conformada por tos, fiebre y disnea, presente en 6 pacientes.
+
+###### GRÁFICO 5: Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+
+```{r}
+#| label: SINTOMAS
+#| message: false
+#| warning: false
+#| echo: false
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO UPSET SINTOMAS.R")
+
+GRAFICO_UPSET_SINTOMAS
+
+```
+
+En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, VIH y diabetes, afectando a más del 11% de los casos. Las enfermedades respiratorias crónicas también tuvieron una representación significativa. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
 
 ###### TABLA 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
@@ -178,7 +199,23 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 TABLA_COMORB_GT
 ```
 
-###### GRAFICO N° 5. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE /2025 hasta SE /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=72
+El **Gráfico N°6** muestra que la mayor cantidad de casos corresponde a pacientes `r COMBINACION_1` asociadas, seguido en frecuencia por pacientes con antecedentes de `r COMBINACION_2`, `r COMBINACION_3` y `r COMBINACION_4`. En cuanto a las asociaciones entre comorbilidades, la combinación más frecuente identificada fue la coexistencia de HIPERTENSIÓN + FUMADOR, registrada en 3 pacientes.
+
+###### GRÁFICO 6: Frecuencia y combinaciones de comorbilidades registrados en casos de IRAG confirmados por laboratorio. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS_POSITIVOS`
+
+```{r}
+#| label: COMORBILIDADES
+#| message: false
+#| warning: false
+#| echo: false
+
+
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICOS_UPSET COMORBILIDADES.R")
+
+GRAFICO_UPSET_COMORBILIDADES
+```
+
+###### GRAFICO 7. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES`
 
 ```{r}
 #| label: PROPORCION IRAG-IRAG EXTENDIDA-INTERNADOS
@@ -192,6 +229,8 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 GRAFICO_IRAG_INTERNADOS
 ```
 
+###### GRAFICO 8. Distribución porcentual de internaciones en unidad de cuidados intensivos por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES_UCI`
+
 ```{r}
 #| label: PROPORCION IRAG UCI-IRAG EXTENDIDA UCI-INTERNADOS UCI
 #| message: false
@@ -203,6 +242,10 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 
 GRAFICO_IRAG_INTERNADOS_UCI
 ```
+
+El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA` y la SE `r SE_MAX_2025_AGRUPADA` fue de `r TOTAL_DEFUNCIONES`, de las cuales `r TOTAL_DEFUNCIONES_IRAG` fueron por IRAG y `r TOTAL_DEFUNCIONES_IRAG_EXT` fueron por IRAG extendida **(Gráfico N° 9)**.
+
+###### GRAFICO 9. Total de defunciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_DEFUNCIONES`
 
 ```{r}
 #| label: DEFUNCIONES IRAG-IRAG EXTENDIDA-DEFUNCIONES TOTALES
