@@ -94,7 +94,36 @@ DATA_UC_IRAG_LISTA <- DATA_UC_IRAG_LISTA %>%
   mutate(SEMANA_LABEL = as.character(semana))
 
 
+# ==============================================================================
+# TEXTO ENRIQUECIDO BASE AGRUPADA
+# ==============================================================================
 
+# ------------------------------------------------------------------------------
+# 1. SEMANA EPIDEMIOLOGICA MINIMA Y MAXIMA DESDE DATA_UC_IRAG_LISTA
+# ------------------------------------------------------------------------------
+
+# Asegurar que SEPI_FECHA_INTER sea numérica
+
+DATA_UC_IRAG_LISTA$SEMANA_LABEL <- as.numeric(DATA_UC_IRAG_LISTA$SEMANA_LABEL)
+
+# Calcular semanas mínima y máxima
+
+SE_MIN_2025_AGRUPADA <- min(DATA_UC_IRAG_LISTA$SEMANA_LABEL, na.rm = TRUE)
+SE_MAX_2025_AGRUPADA <- max(DATA_UC_IRAG_LISTA$SEMANA_LABEL, na.rm = TRUE)
+
+#Internados
+
+TOTAL_INTERNACIONES <- sum(DATA_UC_IRAG_LISTA$`pacientes internados por todas las causas`, na.rm= TRUE)
+
+TOTAL_INTERNACIONES_UCI <- sum(DATA_UC_IRAG_LISTA$`pacientes ingresados a uci`, na.rm = TRUE)
+
+#Defunciones
+
+TOTAL_DEFUNCIONES <- sum(DATA_UC_IRAG_LISTA$`defunciones totales`,na.rm = TRUE)
+
+TOTAL_DEFUNCIONES_IRAG <- sum(DATA_UC_IRAG_LISTA$`defunciones por irag`,na.rm = TRUE)
+
+TOTAL_DEFUNCIONES_IRAG_EXT <- sum(DATA_UC_IRAG_LISTA$`defunciones por irag extendida`, na.rm =TRUE)
 
 
 
