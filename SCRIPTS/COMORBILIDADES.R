@@ -97,3 +97,15 @@ TABLA_COMORB_GT <- TABLA_COMORB %>%
 
 TABLA_COMORB_GT
 
+#--------------------------------------------------------------------
+#TEXTO ENRIQUECIDO COMORBILIDADES MÁS FRECUENTES
+#--------------------------------------------------------------------
+
+#Comorbilidad 
+COMORB_MAYOR_NOMBRE <- TABLA_COMORB$Comorbilidad[which.max(TABLA_COMORB$Porcentaje)]
+
+#Mayor porcentaje
+COMORB_MAYOR_PCT <- max(TABLA_COMORB$Porcentaje)
+
+#Frecuencia
+COMORB_MAYOR_FRE <- TABLA_COMORB$Frecuencia[which.max(TABLA_COMORB$Porcentaje)]
