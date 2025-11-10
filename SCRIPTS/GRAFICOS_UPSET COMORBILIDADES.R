@@ -117,4 +117,35 @@ GRAFICO_UPSET_COMORBILIDADES <- upset(
 
 GRAFICO_UPSET_COMORBILIDADES
 
+#--------------------------------------------------------------------------------------------------
+# TEXTO ENRIQUECIDO INTERSECCION DE COMORBILIDADES
+#--------------------------------------------------------------------------------------------------
 
+# Crear tabla de combinaciones
+
+tabla_combinaciones <- base_comorbilidades_filtradas %>%
+  select(-ID) %>%                         # Quito ID
+  mutate(across(everything(), as.numeric)) %>% 
+  
+  # Crear strings con las comorbilidades presentes por fila
+  mutate(Combinacion = apply(., 1, function(x){
+    paste(names(.)[which(x == 1)], collapse = " + ")
+  })) %>%
+  group_by(Combinacion) %>%
+  summarise(Frecuencia = n()) %>%
+  arrange(desc(Frecuencia))
+
+#Obtener la combinación más frecuente
+
+top_4_combinaciones <- tabla_combinaciones %>% 
+  slice(1:4)
+
+# Generar objetos individuales para cada combinación
+
+for(i in 1:nrow(top_4_combinaciones)){
+  combo_name <- paste0("COMBINACION_", i)
+  assign(combo_name, top_4_combinaciones$Combinacion[i])
+  
+  freq_name <- paste0("FRECUENCIA_", i)
+  assign(freq_name, top_4_combinaciones$Frecuencia[i])
+}
