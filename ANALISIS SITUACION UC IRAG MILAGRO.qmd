@@ -48,6 +48,17 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/EXPLORACION BASE Y NUEVO DATAFRAME.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/BASE AGRUPADA NUEVO DATAFRAME.R")
 source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/TEXTO_ENRIQUECIDO.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO IRAG POR SE.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/CASOS DE IRAG POR GRUPO DE EDAD.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR SEMANA.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR GRUPO DE EDAD.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICOS_UPSET COMORBILIDADES.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO UPSET SINTOMAS.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/COMORBILIDADES.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG E IRAG EXTENDIDA DEL TOTAL DE INTERNADOS.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG UCI E IRAG EXTENDIDA UCI DEL TOTAL DE INTERNADOS UCI.R")
+source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DEFUNCIONES IRAG, IRAG EXTENDIDA Y POR OTRAS CAUSAS.R")
+
 ```
 
 ###### MAPA 1. Geolocalización de los efectores pertenecientes a la Red Nacional de UC-IRAG de la provincia de Salta.
@@ -109,10 +120,7 @@ El **Gráfico N° 1** se observa un aumento sostenido de casos desde la SE 12 ha
 #| echo: false
 #| paged-print: false
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO IRAG POR SE.R")
-
 GRAFICO_INTERACTIVO_SE
-
 
 ```
 
@@ -129,7 +137,6 @@ La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzand
 #| echo: false
 #| paged-print: false
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/CASOS DE IRAG POR GRUPO DE EDAD.R")
 GRAFICO_INTERACTIVO_EDAD
 ```
 
@@ -145,10 +152,7 @@ Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en
 #| message: false
 #| warning: false
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR SEMANA.R")
-
 GRAFICO_INTERACTIVO_VIRUS
-
 
 ```
 
@@ -161,8 +165,6 @@ En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de
 #| message: false
 #| warning: false
 #| echo: false
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR GRUPO DE EDAD.R")
 
 GRAFICO_INTERACTIVO_VIRUS_EDAD
 ```
@@ -177,7 +179,6 @@ El **Gráfico N° 5** presenta la frecuencia y combinación de signos y síntoma
 #| warning: false
 #| echo: false
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO UPSET SINTOMAS.R")
 
 GRAFICO_UPSET_SINTOMAS
 
@@ -193,9 +194,6 @@ En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, repre
 #| warning: false
 #| echo: false
 
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/COMORBILIDADES.R")
-
 TABLA_COMORB_GT
 ```
 
@@ -209,9 +207,6 @@ El **Gráfico N°6** muestra que la mayor cantidad de casos corresponde a pacien
 #| warning: false
 #| echo: false
 
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICOS_UPSET COMORBILIDADES.R")
-
 GRAFICO_UPSET_COMORBILIDADES
 ```
 
@@ -223,9 +218,6 @@ GRAFICO_UPSET_COMORBILIDADES
 #| warning: false
 #| echo: false
 
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG E IRAG EXTENDIDA DEL TOTAL DE INTERNADOS.R")
-
 GRAFICO_IRAG_INTERNADOS
 ```
 
@@ -236,9 +228,6 @@ GRAFICO_IRAG_INTERNADOS
 #| message: false
 #| warning: false
 #| echo: false
-
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG UCI E IRAG EXTENDIDA UCI DEL TOTAL DE INTERNADOS UCI.R")
 
 GRAFICO_IRAG_INTERNADOS_UCI
 ```
@@ -252,9 +241,6 @@ El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA
 #| message: false
 #| warning: false
 #| echo: false
-
-
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DEFUNCIONES IRAG, IRAG EXTENDIDA Y POR OTRAS CAUSAS.R")
 
 GRAFICO_IRAG_DEFUNCIONES
 ```
