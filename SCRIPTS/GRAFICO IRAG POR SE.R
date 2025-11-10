@@ -78,3 +78,17 @@ GRAFICO_INTERACTIVO_SE <- highchart() %>%
   hc_exporting(enabled = TRUE)
 
 GRAFICO_INTERACTIVO_SE
+
+#-----------------------------------------------------#
+#VALORES PARA TEXTO ENRIQUECIDO
+#-----------------------------------------------------#
+
+FRECUENCIA_IRAG<- sum(CASOS_PIVOT$`Infección respiratoria aguda grave (IRAG)`,na.rm =T)
+
+FRECUENCIA_IRAG_EXT <- sum(CASOS_PIVOT$`IRAG extendida`,na.rm = T)
+
+TOTAL_CASOS <- sum(FRECUENCIA_IRAG + FRECUENCIA_IRAG_EXT)
+
+PORCENTAJE_IRAG <- round((FRECUENCIA_IRAG / TOTAL_CASOS) * 100, 0)
+
+PORCENTAJE_IRAG_EXT <- round((FRECUENCIA_IRAG_EXT / TOTAL_CASOS) * 100, 0)
