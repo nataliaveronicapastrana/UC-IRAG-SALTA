@@ -107,8 +107,21 @@ GRAFICO_INTERACTIVO_VIRUS <- highchart() %>%
 
 print(GRAFICO_INTERACTIVO_VIRUS)
 
+# ------------------------------------------------------------------------------
+# TEXTO ENRIQUECIDO DETERMINACIONES
+# ------------------------------------------------------------------------------
 
+#Influenza
+TOTAL_CASOS_INFLUENZA <- sum(DATA_VIRUS$casos_influenza, na.rm = TRUE)
 
+# Total de casos de VSR
+TOTAL_CASOS_VSR <- sum(DATA_VIRUS$casos_vsr, na.rm = TRUE)
+
+# Total de casos de COVID-19
+TOTAL_CASOS_COVID <- sum(DATA_VIRUS$casos_covid, na.rm = TRUE)
+
+#Total casos positivos
+TOTAL_CASOS_POSITIVOS <- sum(TOTAL_CASOS_INFLUENZA + TOTAL_CASOS_VSR + TOTAL_CASOS_COVID)
 
 
 
