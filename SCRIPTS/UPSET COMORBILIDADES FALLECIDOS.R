@@ -1,31 +1,19 @@
 #-----------------------------------------------------------------------------------
-#                        🛑   GRÁFICOS UPSET PARA COMORBILIDADES Y SÍNTOMAS 
+#                        🛑   GRÁFICOS UPSET PARA COMORBILIDADES EN FALLECIDOS 
 #-----------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------
-#Selecciono registros solo con resultado positivo para al menos una determinacion
+# Selecciono solo los registros con FALLECIDOS == "SI"
 #-----------------------------------------------------------------------------------
 
-columnas <- c("VSR_FINAL","COVID_19_FINAL","INFLUENZA_FINAL")
-
-resultado <- c("Negativo","Sin resultado","En estudio")
-
-DATA_UC_LISTA<- DATA_UC_LISTA %>%
-  mutate(DETERMINACION_POSITIVA = if_else(
-    if_any(all_of(columnas), ~ !.x %in% resultado),
-    "1", "0"))
-
-DATA_UC_LISTA <- DATA_UC_LISTA %>% filter(DETERMINACION_POSITIVA == "1")
-
+DATA_UC_LISTA_FALLECIDOS <- DATA_UC_LISTA %>%
+  filter(FALLECIDO == "SI")
 
 #-----------------------------------------------------------------------------------
-#                        🛑   ANALISIS COMORBILIDADES
+#                        🛑   ANÁLISIS DE COMORBILIDADES EN FALLECIDOS
 #-----------------------------------------------------------------------------------
 
-#-----------------------------------------------------------------------------------
-#1- Creo vectores que contienen nombres de comorbilidades
-#-----------------------------------------------------------------------------------
-
+# 1. Creo vector con nombres de comorbilidades
 comorbilidades <- c(
   "DIABETES", "BAJO_PESO_NACIMIENTO", "ASMA", "TUBERCULOSIS", "ENF_RESPIRATORIA",
   "CARDIOPATIA_CONGENITA", "VIH", "ASPLENIA", "DESNUTRICION", "CANCER",
@@ -37,58 +25,51 @@ comorbilidades <- c(
   "FUMADOR", "OTRAS_COMORBILIDADES", "SIN_COMORBILIDADES"
 )
 
-
 #------------------------------------------------------------------------------------------
-#2- Reemplazo "9" y "NA" por "0" para tener un df binario donde 1 es presencia y 0 ausencia
+# 2. Reemplazo "9" y "NA" por "0" (df binario: 1 presencia / 0 ausencia)
 #------------------------------------------------------------------------------------------
 
-base_comorbilidades <- DATA_UC_LISTA %>%
+base_comorbilidades_defunciones <- DATA_UC_LISTA_FALLECIDOS %>%
   mutate(across(
     all_of(comorbilidades),
-    ~ as.numeric(.) %>%                    
-      replace_na(0) %>%                     
-      replace(. == 9, 0)                    
+    ~ as.numeric(.) %>%
+      replace_na(0) %>%
+      replace(. == 9, 0)
   ))
 
 #------------------------------------------------------------------------------------------
-#3- Selecciono variables de interés para el gráfico
+# 3. Selecciono variables de interés para el gráfico
 #------------------------------------------------------------------------------------------
 
-base_comorbilidades <- base_comorbilidades %>% select(all_of(comorbilidades)) %>%
+base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
+  select(all_of(comorbilidades)) %>%
   mutate(ID = row_number()) %>%
   relocate(ID)
 
-
-#Renombro las columnas para cambiar los "-" por espacios
-base_comorbilidades <- base_comorbilidades %>% 
-  rename_with(~ str_replace_all(., "_", " ")) 
-
+# Renombro columnas (quita "_")
+base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
+  rename_with(~ str_replace_all(., "_", " "))
 
 #--------------------------------------------------------------------------------------------------
-#4-Selecciono aquellas columnas para las que haya al menos un registro == 1 (presencia comorbilidad)
+# 4. Selecciono aquellas columnas con al menos un registro == 1 (presencia de comorbilidad)
 #--------------------------------------------------------------------------------------------------
 
-base_comorbilidades_filtradas <- base_comorbilidades %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE)))
-
-
-base_comorbilidades_filtradas <- base_comorbilidades_filtradas %>%
+base_comorbilidades_filtradas_def <- base_comorbilidades_defunciones %>%
+  select(ID, where(~ any(. == 1, na.rm = TRUE))) %>%
   filter(if_any(everything(), ~ . == 1))
 
-
-# Nombres de comorbilidades (intersecciones)
-#Excluyo la primera columna (ID)
-variables_comorbilidades <- colnames(base_comorbilidades_filtradas)[-1]
+# Nombres de comorbilidades presentes
+variables_comorbilidades_defunciones <- colnames(base_comorbilidades_filtradas_def)[-1]
 
 #--------------------------------------------------------------------------------------------------
-#5- Grafico upset
+# 5. Gráfico UpSet de comorbilidades en fallecidos
 #--------------------------------------------------------------------------------------------------
 
-GRAFICO_UPSET_COMORBILIDADES <- upset(
-  data = base_comorbilidades_filtradas, 
-  intersect = variables_comorbilidades,
-  min_size = 2, #tamaño minimo de interseccion
-  name = "Comorbilidades",
+GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS <- upset(
+  data = base_comorbilidades_filtradas_def,
+  intersect = variables_comorbilidades_defunciones,
+  min_size = 1,
+  name = "Comorbilidades en fallecidos",
   base_annotations = list(
     'Intersecciones' = intersection_size(
       mapping = aes(),
@@ -108,14 +89,14 @@ GRAFICO_UPSET_COMORBILIDADES <- upset(
       )
     )
   )
-) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud SNVS 2.0
+) +
+  labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0).
   *Se excluyeron las combinaciones de comorbilidades con un único caso (n=1)") +
   theme(plot.caption = element_text(size = 8, hjust = 0))
 
+# Mostrar gráfico
+GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
 
-#Gráfico
-
-GRAFICO_UPSET_COMORBILIDADES
 
 #--------------------------------------------------------------------------------------------------
 # TEXTO ENRIQUECIDO INTERSECCION DE COMORBILIDADES
@@ -123,7 +104,7 @@ GRAFICO_UPSET_COMORBILIDADES
 
 # Crear tabla de combinaciones
 
-tabla_combinaciones <- base_comorbilidades_filtradas %>%
+tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
   select(-ID) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
@@ -137,19 +118,15 @@ tabla_combinaciones <- base_comorbilidades_filtradas %>%
 
 #Obtener la combinación más frecuente
 
-top_4_combinaciones <- tabla_combinaciones %>% 
+top_4_combinaciones_defunciones <- tabla_combinaciones_defunciones %>% 
   slice(1:4)
 
 # Generar objetos individuales para cada combinación
 
-for(i in 1:nrow(top_4_combinaciones)){
-  combo_name <- paste0("COMBINACION_", i)
-  assign(combo_name, top_4_combinaciones$Combinacion[i])
+for(i in 1:nrow(top_4_combinaciones_defunciones)){
+  combo_name_defunciones <- paste0("DEFUNCION_", i)
+  assign(combo_name_defunciones, top_4_combinaciones_defunciones$Combinacion[i])
   
-  freq_name <- paste0("FRECUENCIA_", i)
-  assign(freq_name, top_4_combinaciones$Frecuencia[i])
+  freq_name_defunciones <- paste0("DEFUNCIONFRE_", i)
+  assign(freq_name_defunciones, top_4_combinaciones_defunciones$Frecuencia[i])
 }
-
-
-
-

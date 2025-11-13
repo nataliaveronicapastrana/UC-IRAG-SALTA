@@ -60,6 +60,12 @@ SE_MAYOR_N_CASOS <- DATA_UC_LISTA %>%
 SEMANA_PICO <- SE_MAYOR_N_CASOS$SEPI_MIN_INTERNACION
 CASOS_SEMANA_PICO <- SE_MAYOR_N_CASOS$casos_semanales
 
+# Total defunciones
+TOTAL_DEFUNCIONES_NOMINAL<- DATA_UC_LISTA %>%
+  filter(FALLECIDO == "SI")
+
+TOTAL_DEFUNCIONES_NOM <- nrow(TOTAL_DEFUNCIONES_NOMINAL)
+
 # # ------------------------------------------------------------------------------
 # # 5. FRECUENCIAS ABSOLUTAS Y RELATIVAS
 # # ------------------------------------------------------------------------------

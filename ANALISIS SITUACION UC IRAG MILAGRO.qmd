@@ -171,7 +171,7 @@ GRAFICO_INTERACTIVO_VIRUS_EDAD
 
 El **Gráfico N° 5** presenta la frecuencia y combinación de signos y síntomas reportados en los casos de IRAG e IRAG extendida. Se observa que el síntoma más frecuente fue la tos, seguido por fiebre ≥38°C, disnea y malestar general, conformando el núcleo clínico predominante del cuadro respiratorio. Respecto de las combinaciones sintomáticas, la asociación más común estuvo conformada por tos, fiebre y disnea, presente en 6 pacientes.
 
-###### GRÁFICO 5: Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+###### GRÁFICO 5. Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
 ```{r}
 #| label: SINTOMAS
@@ -184,9 +184,9 @@ GRAFICO_UPSET_SINTOMAS
 
 ```
 
-En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, VIH y diabetes, afectando a más del 11% de los casos. Las enfermedades respiratorias crónicas también tuvieron una representación significativa. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
+En cuanto a comorbilidades en todos los casos de IRAG/IRAG extendida, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, diabetes y enfermedad respiratoria crónica afectando a más del 11% de los casos. El VIH también tuvo una representación relevante entre las comorbilidades registradas. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
 
-###### TABLA 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+###### Tabla 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
 ```{r}
 #| label: CASOS-COMORBILIDADES
@@ -197,9 +197,9 @@ En cuanto a comorbilidades, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, repre
 TABLA_COMORB_GT
 ```
 
-El **Gráfico N°6** muestra que la mayor cantidad de casos corresponde a pacientes `r COMBINACION_1` asociadas, seguido en frecuencia por pacientes con antecedentes de `r COMBINACION_2`, `r COMBINACION_3` y `r COMBINACION_4`. En cuanto a las asociaciones entre comorbilidades, la combinación más frecuente identificada fue la coexistencia de HIPERTENSIÓN + FUMADOR, registrada en 3 pacientes.
+El **Gráfico N°6**
 
-###### GRÁFICO 6: Frecuencia y combinaciones de comorbilidades registrados en casos de IRAG confirmados por laboratorio. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS_POSITIVOS`
+###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida fallecidos. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_NOM`
 
 ```{r}
 #| label: COMORBILIDADES
@@ -210,7 +210,9 @@ El **Gráfico N°6** muestra que la mayor cantidad de casos corresponde a pacien
 GRAFICO_UPSET_COMORBILIDADES
 ```
 
-###### GRAFICO 7. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES`
+El **Gráfico N° 7** muestra un incremento en la proporción de las internaciones por IRAG entre las semanas 13 y 25. Posteriormente, a partir de la semana 26, se observa un descenso gradual en la participación de casos de IRAG e IRAG extendida, mientras aumentan las internaciones por otras causas. En la mayoría de las semanas, la categoría “otras causas” mantiene un predominio relativo sobre las IRAG.
+
+###### GRÁFICO 7. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES`
 
 ```{r}
 #| label: PROPORCION IRAG-IRAG EXTENDIDA-INTERNADOS
@@ -221,7 +223,9 @@ GRAFICO_UPSET_COMORBILIDADES
 GRAFICO_IRAG_INTERNADOS
 ```
 
-###### GRAFICO 8. Distribución porcentual de internaciones en unidad de cuidados intensivos por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES_UCI`
+En el **Gráfico N° 8** se observa que las internaciones en la Unidad de Cuidados Intensivos (UCI) por casos de IRAG e IRAG extendida presentan una marcada variabilidad intersemanal, con semanas en las que el 100% de los pacientes internados corresponden a estos casos. A partir de la semana 29 se evidencia una disminución progresiva en la proporción de internaciones en UCI por IRAG, mientras aumentan las hospitalizaciones por otras causas. En conjunto, el gráfico muestra que las infecciones respiratorias representan una carga importante de internaciones en cuidados intensivos, con predominio de IRAG sobre IRAG extendida.
+
+###### GRÁFICO 8. Distribución porcentual de internaciones en unidad de cuidados intensivos por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES_UCI`
 
 ```{r}
 #| label: PROPORCION IRAG UCI-IRAG EXTENDIDA UCI-INTERNADOS UCI

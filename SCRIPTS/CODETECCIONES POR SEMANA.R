@@ -60,3 +60,38 @@ TABLA_CODETECCIONES_GT <- RESUMEN_CODETECCIONES_SEMANAL %>%
 
 # Mostrar la tabla en RStudio
 TABLA_CODETECCIONES_GT
+
+
+# ------------------------------------------------------------------------
+# VALORES PARA TEXTO ENRIQUECIDO - CODETECCIONES VIRALES
+# ------------------------------------------------------------------------
+
+# Total de codetecciones registradas
+TOTAL_CODETECCIONES <- nrow(CODETECCIONES)
+
+# Número de combinaciones distintas observadas
+TIPOS_CODETECCIONES <- length(unique(CODETECCIONES$combinacion))
+
+# Tipo de combinación más frecuente y su frecuencia
+CODET_FRECUENTE <- CODETECCIONES %>%
+  count(combinacion, sort = TRUE) %>%
+  slice(1)
+
+COMBINACION_MAS_FRECUENTE <- CODET_FRECUENTE$combinacion
+N_COMBINACION_MAS_FRECUENTE <- CODET_FRECUENTE$n
+
+# Semana con mayor número total de codetecciones
+SEMANA_MAYOR_CODET <- RESUMEN_CODETECCIONES_SEMANAL %>%
+  group_by(SEPI_MIN_INTERNACION) %>%
+  summarise(total = sum(casos)) %>%
+  slice_max(order_by = total, n = 1) %>%
+  pull(SEPI_MIN_INTERNACION)
+
+# ------------------------------------------------------------------------
+# MOSTRAR RESULTADOS EN CONSOLA
+# ------------------------------------------------------------------------
+TOTAL_CODETECCIONES
+TIPOS_CODETECCIONES
+COMBINACION_MAS_FRECUENTE
+N_COMBINACION_MAS_FRECUENTE
+SEMANA_MAYOR_CODET

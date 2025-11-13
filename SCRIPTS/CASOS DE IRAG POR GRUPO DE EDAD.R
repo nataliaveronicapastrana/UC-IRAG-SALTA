@@ -131,19 +131,17 @@ print(GRAFICO_INTERACTIVO_EDAD, width = 550, height = 450)
 # CASOS DE IRAG E IRAGE POR GRUPO ETARIO
 # ----------------------------------------------------------------
 
-#Mayor cantidad de casos de IRAG
-GRUPO_CANTIDAD_IRAG <-(CASOS_POR_EDAD$IRAG[which.max(CASOS_POR_EDAD$IRAG)])
+# Mayor cantidad de casos de IRAG
+GRUPO_CANTIDAD_IRAG <- CASOS_POR_EDAD$`Infección respiratoria aguda grave (IRAG)`[which.max(CASOS_POR_EDAD$`Infección respiratoria aguda grave (IRAG)`)]
 
 # Grupo con mayor número de IRAG
-GRUPO_MAYOR_IRAG <- as.character(CASOS_POR_EDAD$EDAD_UC_IRAG[which.max(CASOS_POR_EDAD$IRAG)])
+GRUPO_MAYOR_IRAG <- as.character(CASOS_POR_EDAD$EDAD_UC_IRAG[which.max(CASOS_POR_EDAD$`Infección respiratoria aguda grave (IRAG)`)])
 
+# Mayor cantidad de casos de IRAG extendida
+GRUPO_CANTIDAD_IRAG_EXT <- CASOS_POR_EDAD$`IRAG extendida`[which.max(CASOS_POR_EDAD$`IRAG extendida`)]
 
-#Mayor cantidad de casos de IRAGE
-GRUPO_CANTIDAD_IRAG_EXT <-(CASOS_POR_EDAD$IRAG_EXTENDIDA[which.max(CASOS_POR_EDAD$IRAG_EXTENDIDA)])
-
-# Grupo con mayor número de IRAGE
-GRUPO_MAYOR_IRAG_EXT <- as.character(CASOS_POR_EDAD$EDAD_UC_IRAG[which.max(CASOS_POR_EDAD$IRAG_EXTENDIDA)])
-
+# Grupo con mayor número de IRAG extendida
+GRUPO_MAYOR_IRAG_EXT <- as.character(CASOS_POR_EDAD$EDAD_UC_IRAG[which.max(CASOS_POR_EDAD$`IRAG extendida`)])
 
 # ----------------------------------------------------------------
 # LETALIDAD POR GRUPO ETARIO
