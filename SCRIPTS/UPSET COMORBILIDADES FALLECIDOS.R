@@ -68,7 +68,7 @@ variables_comorbilidades_defunciones <- colnames(base_comorbilidades_filtradas_d
 GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS <- upset(
   data = base_comorbilidades_filtradas_def,
   intersect = variables_comorbilidades_defunciones,
-  min_size = 1,
+  min_size = 2,
   name = "Comorbilidades en fallecidos",
   base_annotations = list(
     'Intersecciones' = intersection_size(
@@ -90,11 +90,12 @@ GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS <- upset(
     )
   )
 ) +
-  labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0).
-  *Se excluyeron las combinaciones de comorbilidades con un único caso (n=1)") +
+  labs(caption = "Fuente: Elaboración propia en base a los datos provenientes 
+del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0).") +
   theme(plot.caption = element_text(size = 8, hjust = 0))
 
 # Mostrar gráfico
+
 GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
 
 
@@ -108,7 +109,8 @@ tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
   select(-ID) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
-  # Crear strings con las comorbilidades presentes por fila
+# Crear strings con las comorbilidades presentes por fila
+  
   mutate(Combinacion = apply(., 1, function(x){
     paste(names(.)[which(x == 1)], collapse = " + ")
   })) %>%

@@ -13,7 +13,7 @@ format:
     toc-title: "ÍNDICE"
     toc-depth: 3
     toc-location: left
-    css: "C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/TEMPLATES/CSS/estilo.css"
+    css: "TEMPLATES/CSS/estilo.css"
     theme: cerulean
 editor: visual
 reference-location: margin
@@ -43,22 +43,21 @@ La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha est
 #| warning: false
 
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/ACTIVACION DE PAQUETES.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/IMPORTAR BASE DE DATOS.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/EXPLORACION BASE Y NUEVO DATAFRAME.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/BASE AGRUPADA NUEVO DATAFRAME.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/TEXTO_ENRIQUECIDO.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO IRAG POR SE.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/CASOS DE IRAG POR GRUPO DE EDAD.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR SEMANA.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DETECCIONES POR GRUPO DE EDAD.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICOS_UPSET COMORBILIDADES.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/GRAFICO UPSET SINTOMAS.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/COMORBILIDADES.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG E IRAG EXTENDIDA DEL TOTAL DE INTERNADOS.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/PROPORCIÓN IRAG UCI E IRAG EXTENDIDA UCI DEL TOTAL DE INTERNADOS UCI.R")
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/DEFUNCIONES IRAG, IRAG EXTENDIDA Y POR OTRAS CAUSAS.R")
-
+source(here::here("SCRIPTS", "ACTIVACION DE PAQUETES.R"))
+source(here("SCRIPTS", "IMPORTAR BASE DE DATOS.R"))
+source(here("SCRIPTS", "EXPLORACION BASE Y NUEVO DATAFRAME.R"))
+source(here("SCRIPTS", "BASE AGRUPADA NUEVO DATAFRAME.R"))
+source(here("SCRIPTS", "TEXTO_ENRIQUECIDO.R"))
+source(here("SCRIPTS", "GRAFICO IRAG POR SE.R"))
+source(here("SCRIPTS", "CASOS DE IRAG POR GRUPO DE EDAD.R"))
+source(here("SCRIPTS", "DETECCIONES POR SEMANA.R"))
+source(here("SCRIPTS", "DETECCIONES POR GRUPO DE EDAD.R"))
+source(here("SCRIPTS", "UPSET COMORBILIDADES FALLECIDOS.R"))
+source(here("SCRIPTS", "GRAFICO UPSET SINTOMAS.R"))
+source(here("SCRIPTS", "GRAFICOS_UPSET COMORBILIDADES.R"))
+source(here("SCRIPTS", "PROPORCIÓN IRAG E IRAG EXTENDIDA DEL TOTAL DE INTERNADOS.R"))
+source(here("SCRIPTS", "PROPORCIÓN IRAG UCI E IRAG EXTENDIDA UCI DEL TOTAL DE INTERNADOS UCI.R"))
+source(here("SCRIPTS", "DEFUNCIONES IRAG, IRAG EXTENDIDA Y POR OTRAS CAUSAS.R"))
 ```
 
 ###### MAPA 1. Geolocalización de los efectores pertenecientes a la Red Nacional de UC-IRAG de la provincia de Salta.
@@ -69,7 +68,7 @@ source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCR
 #| echo: false
 #| warning: false
 
-source("C:/Users/Natal/Documents/ANALISIS DE DATOS UC IRAG HSM/UC-IRAG-SALTA/SCRIPTS/MAPA INTERACT DE EFECTORES.R")
+source(here("SCRIPTS", "MAPA INTERACT DE EFECTORES.R"))
 MAPA_EFECTORES
 ```
 
@@ -105,9 +104,21 @@ Describir el perfil clínico, epidemiológico y de diagnóstico etiológico de l
 *\
 Para mayor información de la estrategia de vigilancia centinela de IRAG consultar en: <https://www.argentina.gob.ar/sites/default/files/guia-uc-irag-vff.pdf>*
 
+### NOTA METODOLÓGICA
+
+En el presente informe se describe la situación epidemiológica de las infecciones respiratorias agudas graves (IRAG) correspondientes a la Unidad Centinela del Hospital Señor del Milagro. El análisis integra información proveniente de dos fuentes de notificación:
+
+1.  **Notificación nominal**
+
+2.  **Notificación agrupada**
+
+El procesamiento de datos se realizó desde la semana epidemiológica (SE) `r SE_MIN_2025` **hasta la SE** `r SE_MAX_2025`, tomando como fecha de corte la última SE completa disponible al momento de la elaboración del informe.
+
+Cuando se emplearon gráficos específicos (por ejemplo, análisis de intersecciones mediante gráficos UpSet), se aplicaron criterios de depuración, tales como la exclusión de combinaciones con baja frecuencia para garantizar la estabilidad de las estimaciones.
+
 ### SITUACIÓN EPIDEMIOLÓGICA
 
-Entre la semana epidemiológica (SE) `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) corresponden a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
+Entre la semana epidemiológica `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) corresponden a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
 
 El **Gráfico N° 1** se observa un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 14 y SE 23 con un pico en la SE `r SEMANA_PICO` en la cual se presentaron un total de `r CASOS_SEMANA_PICO` casos .
 
@@ -184,31 +195,39 @@ GRAFICO_UPSET_SINTOMAS
 
 ```
 
-En cuanto a comorbilidades en todos los casos de IRAG/IRAG extendida, la más frecuente fue `r COMORB_MAYOR_NOMBRE`, representando `r COMORB_MAYOR_PCT` **%** (n = `r COMORB_MAYOR_FRE`), seguida por hipertensión, diabetes y enfermedad respiratoria crónica afectando a más del 11% de los casos. El VIH también tuvo una representación relevante entre las comorbilidades registradas. Otras condiciones, como tuberculosis, enfermedades reumatológicas, obesidad y cardiopatías, fueron menos comunes, afectando a menos del 6% de los pacientes. **(Tabla N° 1)**
+::: {style="font-size:12px; color:#555; margin-top:8px;"}
+<i>\*Se excluyeron las intersecciones con frecuencia igual o menor a tres casos y aquellas que involucraban más de 6 combinaciones de síntomas.</i>
+:::
 
 ###### Tabla 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
 ```{r}
-#| label: CASOS-COMORBILIDADES
-#| message: false
-#| warning: false
-#| echo: false
-
-TABLA_COMORB_GT
-```
-
-El **Gráfico N°6**
-
-###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida fallecidos. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_NOM`
-
-```{r}
-#| label: COMORBILIDADES
+#| label: UPSET-COMORBILIDADES
 #| message: false
 #| warning: false
 #| echo: false
 
 GRAFICO_UPSET_COMORBILIDADES
 ```
+
+::: {style="font-size:12px; color:#555; margin-top:8px;"}
+<i>\*Se excluyeron las intersecciones de comorbilidades con frecuencia igual o menor a cinco casos.</i>
+:::
+
+###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida fallecidos. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_NOM`
+
+```{r}
+#| label: COMORBILIDADES-FALLECIDOS
+#| message: false
+#| warning: false
+#| echo: false
+
+GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
+```
+
+::: {style="font-size:12px; color:#555; margin-top:8px;"}
+<i>\*Se excluyeron las intersecciones de comorbilidades con frecuencia igual o menor a un caso.</i>
+:::
 
 El **Gráfico N° 7** muestra un incremento en la proporción de las internaciones por IRAG entre las semanas 13 y 25. Posteriormente, a partir de la semana 26, se observa un descenso gradual en la participación de casos de IRAG e IRAG extendida, mientras aumentan las internaciones por otras causas. En la mayoría de las semanas, la categoría “otras causas” mantiene un predominio relativo sobre las IRAG.
 

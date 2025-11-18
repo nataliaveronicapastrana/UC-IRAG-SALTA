@@ -61,7 +61,7 @@ variables_sintomas <- colnames(base_sintomas_filtrados)[-1]
 GRAFICO_UPSET_SINTOMAS <- upset(
   data = base_sintomas_filtrados, #base de datos 
   intersect = variables_sintomas, #variables que se cruzan para ver intersecciones
-  min_size = 2,
+  min_size = 4,
   max_degree= 6,
   name = "Signos y síntomas", #nombre del eje horizontal del gráfico
   base_annotations = list(
@@ -82,8 +82,8 @@ GRAFICO_UPSET_SINTOMAS <- upset(
       ))
   )
   
-) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud SNVS 2.0
-  *Se excluyeron las combinaciones de comorbilidades con un único caso (n=1)") +
+) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes 
+  del Sistema Nacional de Vigilancia de la Salud SNVS 2.0") +
   theme(plot.caption = element_text(size = 8, hjust = 0))
 
 #Gráfico

@@ -1,46 +1,46 @@
 body {
   background-color: #ffffff;
   font-family: 'Open Sans', Arial, sans-serif;
-  color: #666;
+  color: #000000;
 }
 
 h1 {
-  color: #0207a4;
+  color: #7A0E22;
   text-align: center;
   font-size: 1.7em;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #D3D3D3;
   padding-bottom: 15px;
   margin-top: 20px !important;
 }
 
 h2 {
-  color: #0693e3;
+  color: #002E6D;
   text-align: left;
   font-size: 1.4em;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #D3D3D3;
   padding-bottom: 15px;
 }
 
 h3 {
-  color: #00b5e8;
+  color:  #00428A;
   text-align: left;
   font-size: 1.2em;
   padding-bottom: 15px;
 }
 
 p {
-  color: #666666;
+  color:  #000000;
   font-size: 1em;
   line-height: 1.5;
   text-align: justify;
 }
 
 a {
-  color:#0693e3;
+  color:#005BB5;
   text-decoration: none;
 }
 a:hover {
-  color:#0207a4;
+  color:#7A0E22;
   text-decoration: underline;
 }
 

@@ -1,25 +1,5 @@
 #-----------------------------------------------------------------------------------
-#                        🛑   GRÁFICOS UPSET PARA COMORBILIDADES Y SÍNTOMAS 
-#-----------------------------------------------------------------------------------
-
-#-----------------------------------------------------------------------------------
-#Selecciono registros solo con resultado positivo para al menos una determinacion
-#-----------------------------------------------------------------------------------
-
-columnas <- c("VSR_FINAL","COVID_19_FINAL","INFLUENZA_FINAL")
-
-resultado <- c("Negativo","Sin resultado","En estudio")
-
-DATA_UC_LISTA<- DATA_UC_LISTA %>%
-  mutate(DETERMINACION_POSITIVA = if_else(
-    if_any(all_of(columnas), ~ !.x %in% resultado),
-    "1", "0"))
-
-DATA_UC_LISTA <- DATA_UC_LISTA %>% filter(DETERMINACION_POSITIVA == "1")
-
-
-#-----------------------------------------------------------------------------------
-#                        🛑   ANALISIS COMORBILIDADES
+#                        🛑   ANALISIS COMORBILIDADES GRAFICO UPSET
 #-----------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------
@@ -60,6 +40,7 @@ base_comorbilidades <- base_comorbilidades %>% select(all_of(comorbilidades)) %>
 
 
 #Renombro las columnas para cambiar los "-" por espacios
+
 base_comorbilidades <- base_comorbilidades %>% 
   rename_with(~ str_replace_all(., "_", " ")) 
 
@@ -77,7 +58,8 @@ base_comorbilidades_filtradas <- base_comorbilidades_filtradas %>%
 
 
 # Nombres de comorbilidades (intersecciones)
-#Excluyo la primera columna (ID)
+# Excluyo la primera columna (ID)
+
 variables_comorbilidades <- colnames(base_comorbilidades_filtradas)[-1]
 
 #--------------------------------------------------------------------------------------------------
@@ -87,7 +69,7 @@ variables_comorbilidades <- colnames(base_comorbilidades_filtradas)[-1]
 GRAFICO_UPSET_COMORBILIDADES <- upset(
   data = base_comorbilidades_filtradas, 
   intersect = variables_comorbilidades,
-  min_size = 2, #tamaño minimo de interseccion
+  min_size = 6, #tamaño minimo de interseccion
   name = "Comorbilidades",
   base_annotations = list(
     'Intersecciones' = intersection_size(
@@ -108,9 +90,9 @@ GRAFICO_UPSET_COMORBILIDADES <- upset(
       )
     )
   )
-) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes del Sistema Nacional de Vigilancia de la Salud SNVS 2.0
-  *Se excluyeron las combinaciones de comorbilidades con un único caso (n=1)") +
-  theme(plot.caption = element_text(size = 8, hjust = 0))
+) + labs(caption = "Fuente: Elaboración propia en base a los datos provenientes 
+   del Sistema Nacional de Vigilancia de la Salud SNVS 2.0") +
+  theme(plot.caption = element_text(size = 8, hjust = 0)) 
 
 
 #Gráfico
@@ -127,7 +109,8 @@ tabla_combinaciones <- base_comorbilidades_filtradas %>%
   select(-ID) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
-  # Crear strings con las comorbilidades presentes por fila
+# Crear strings con las comorbilidades presentes por fila
+  
   mutate(Combinacion = apply(., 1, function(x){
     paste(names(.)[which(x == 1)], collapse = " + ")
   })) %>%
@@ -135,7 +118,7 @@ tabla_combinaciones <- base_comorbilidades_filtradas %>%
   summarise(Frecuencia = n()) %>%
   arrange(desc(Frecuencia))
 
-#Obtener la combinación más frecuente
+# Obtener la combinación más frecuente
 
 top_4_combinaciones <- tabla_combinaciones %>% 
   slice(1:4)
