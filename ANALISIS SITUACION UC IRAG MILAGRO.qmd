@@ -15,6 +15,7 @@ format:
     toc-location: left
     css: "TEMPLATES/CSS/estilo.css"
     theme: cerulean
+    include-in-header: encabezado_documento.html
 editor: visual
 reference-location: margin
 citation-location: margin
