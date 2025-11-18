@@ -1,0 +1,55 @@
+<style>
+  .custom-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #7a242f;
+    padding: 0 40px;           /* padding horizontal */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 90px;              /* altura fija del header */
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+
+ .logo-left, .logo-center, .logo-right {
+    display: flex;
+    align-items: center;
+  }
+
+
+  .logo-left { flex: 0 0 auto; }
+  .logo-center { flex: 0 0 auto; }
+  .logo-right { flex: 0 0 auto; }
+ 
+
+  .logo {
+    max-height: 60px;          /* <= menor que 90px del header */
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .institution-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFF;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+</style>
+
+<div class="custom-header">
+  <div class="logo-left">
+    <img class="logo" src="TEMPLATES/CSS/logo_ucirag.png" alt="Logo">
+  </div>
+  <div class="logo-center">
+    <img class="logo" src="TEMPLATES/CSS/logo_ministerio_letras_blancas" alt="Logo">
+  </div>
+  <div class="logo-right">
+    <img class="logo" src="TEMPLATES/CSS/logo_ucirag.png" alt="Logo">
+  </div>
+</div>  
