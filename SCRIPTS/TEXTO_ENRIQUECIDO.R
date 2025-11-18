@@ -26,7 +26,7 @@ cat("Semana epidemiológica máxima:", SE_MAX_2025, "\n")
 
 # Nombre del establecimiento sin repetir
 
-ESTABLECIMIENTO <- unique(na.omit(DATA_UC_LISTA$ESTABLECIMIENTO_INTERNACION)) 
+ESTABLECIMIENTO <- unique(na.omit(str_to_title(DATA_UC_LISTA$ESTABLECIMIENTO_INTERNACION)))
 
 # ------------------------------------------------------------------------------
 # 3.PROMEDIO SEMANAL DE CASOS TOTALES (IRAG + IRAG EXTENDIDA)
