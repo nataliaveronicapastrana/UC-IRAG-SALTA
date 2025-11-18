@@ -74,7 +74,7 @@ MAPA_EFECTORES
 ```
 
 ::: {style="text-align: right; font-size: 13px; color: #555; margin-top: 8px;"}
-<b>Fuente:</b> Elaboración propia en base a datos del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0) y jurisdicción
+<b>Fuente:</b> Elaboración propia en base a datos del Sistema Nacional de Vigilancia de la Salud (SNVS 2.0) y jurisdicción.
 :::
 
 ### OBJETIVO DEL ANÁLISIS
@@ -200,7 +200,7 @@ GRAFICO_UPSET_SINTOMAS
 <i>\*Se excluyeron las intersecciones con frecuencia igual o menor a tres casos y aquellas que involucraban más de 6 combinaciones de síntomas.</i>
 :::
 
-###### Tabla 1. Casos de IRAG/IRAG extendida según comorbilidades mas frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+###### Tabla 1. Casos de IRAG/IRAG extendida según comorbilidades más frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
 ```{r}
 #| label: UPSET-COMORBILIDADES
