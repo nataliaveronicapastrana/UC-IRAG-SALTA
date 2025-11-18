@@ -76,17 +76,17 @@ GRAFICO_UPSET_COMORBILIDADES <- upset(
       mapping = aes(),
       fill = "#9467BD",
       color = "black",
-      text = list(size = 4)
+      text = list(size = 2.5)
     )
   ),
   themes = upset_modify_themes(
     list(
       'intersections_matrix' = theme(
-        axis.text.y = element_text(size = 8),
-        axis.title.x = element_text(size = 8)
+        axis.text.y = element_text(size = 6),
+        axis.title.x = element_text(size = 6)
       ),
       'overall_sizes' = theme(
-        axis.text.x = element_text(angle = 90, size = 8)
+        axis.text.x = element_text(angle = 90, size = 6)
       )
     )
   )
