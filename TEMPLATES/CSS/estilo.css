@@ -32,6 +32,7 @@ h6 {
   color: #000000;
   text-align: left;
   font-size: 1.2em;
+  font-weight: bold;
   padding-bottom: 15px;
 }
 
@@ -88,6 +89,23 @@ button, .btn {
 button:hover, .btn:hover {
   background-color: #2C3E4C;
   color: #F4DFB9;
+}
+
+
+/*Modificaciones en el índice*/
+.sidebar nav#TOC .toc-title {
+  color: #000000 !important;
+}
+
+
+/* Color normal de los items del índice */
+.sidebar nav#TOC a {
+  color: #000000 !important;
+}
+
+/* Color al pasar el mouse */
+.sidebar nav#TOC a:hover {
+  color: #7A0E22 !important;
 }
 
 .sidebar nav#TOC {
