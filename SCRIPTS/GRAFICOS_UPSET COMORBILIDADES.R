@@ -105,7 +105,7 @@ GRAFICO_UPSET_COMORBILIDADES
 
 # Crear tabla de combinaciones
 
-tabla_combinaciones <- base_comorbilidades_filtradas %>%
+tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
   select(-ID) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
@@ -120,17 +120,17 @@ tabla_combinaciones <- base_comorbilidades_filtradas %>%
 
 # Obtener la combinación más frecuente
 
-top_4_combinaciones <- tabla_combinaciones %>% 
+top_4_combinaciones_comorb <- tabla_combinaciones_comorb %>% 
   slice(1:4)
 
 # Generar objetos individuales para cada combinación
 
-for(i in 1:nrow(top_4_combinaciones)){
-  combo_name <- paste0("COMBINACION_", i)
-  assign(combo_name, top_4_combinaciones$Combinacion[i])
+for(i in 1:nrow(top_4_combinaciones_comorb)){
+  combo_name_comorb <- paste0("COMBINACION_COMORB", i)
+  assign(combo_name_comorb, top_4_combinaciones_comorb$Combinacion[i])
   
-  freq_name <- paste0("FRECUENCIA_", i)
-  assign(freq_name, top_4_combinaciones$Frecuencia[i])
+  freq_name_comorb <- paste0("FRECUENCIA_COMORB", i)
+  assign(freq_name_comorb, top_4_combinaciones_comorb$Frecuencia[i])
 }
 
 

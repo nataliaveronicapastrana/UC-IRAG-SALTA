@@ -3,12 +3,23 @@
 #-----------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------
-# Selecciono solo los registros con FALLECIDOS == "SI"
+# Selecciono solo los registros con FALLECIDOS == "SI" y con laboratorio positivo
 #-----------------------------------------------------------------------------------
 
 DATA_UC_LISTA_FALLECIDOS <- DATA_UC_LISTA %>%
-  filter(FALLECIDO == "SI")
+  filter(
+    FALLECIDO == "SI",
+    (
+      INFLUENZA_FINAL %in% c(
+        "Influenza A H1N1",
+        "Influenza A (sin subtipificar)",
+        "Influenza B (sin linaje)",
+        "Influenza positivo-Sin Tipo"
+      ) |
+        COVID_19_FINAL == "Positivo" |
+        VSR_FINAL %in% c("VSR", "VSR A", "VSR B")))
 
+nrow(DATA_UC_LISTA_FALLECIDOS)
 #-----------------------------------------------------------------------------------
 #                        🛑   ANÁLISIS DE COMORBILIDADES EN FALLECIDOS
 #-----------------------------------------------------------------------------------
@@ -68,7 +79,7 @@ variables_comorbilidades_defunciones <- colnames(base_comorbilidades_filtradas_d
 GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS <- upset(
   data = base_comorbilidades_filtradas_def,
   intersect = variables_comorbilidades_defunciones,
-  min_size = 2,
+  min_size = 1,
   name = "Comorbilidades en fallecidos",
   base_annotations = list(
     'Intersecciones' = intersection_size(
@@ -120,15 +131,15 @@ tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
 
 #Obtener la combinación más frecuente
 
-top_4_combinaciones_defunciones <- tabla_combinaciones_defunciones %>% 
+top_combinaciones_defunciones <- tabla_combinaciones_defunciones %>% 
   slice(1:4)
 
 # Generar objetos individuales para cada combinación
 
-for(i in 1:nrow(top_4_combinaciones_defunciones)){
+for(i in 1:nrow(top_combinaciones_defunciones)){
   combo_name_defunciones <- paste0("DEFUNCION_", i)
-  assign(combo_name_defunciones, top_4_combinaciones_defunciones$Combinacion[i])
+  assign(combo_name_defunciones, top_combinaciones_defunciones$Combinacion[i])
   
   freq_name_defunciones <- paste0("DEFUNCIONFRE_", i)
-  assign(freq_name_defunciones, top_4_combinaciones_defunciones$Frecuencia[i])
+  assign(freq_name_defunciones, top_combinaciones_defunciones$Frecuencia[i])
 }

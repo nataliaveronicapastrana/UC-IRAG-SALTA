@@ -89,3 +89,38 @@ GRAFICO_UPSET_SINTOMAS <- upset(
 #Gráfico
 
 GRAFICO_UPSET_SINTOMAS
+
+#--------------------------------------------------------------------------------------------------
+#                                         TEXTO ENRIQUECIDO
+#--------------------------------------------------------------------------------------------------
+
+# Crear tabla de combinaciones
+
+tabla_combinaciones_sintomas <- base_sintomas_filtrados %>%
+  select(-ID) %>%                         # Quito ID
+  mutate(across(everything(), as.numeric)) %>% 
+  
+  # Crear strings con los sintomas presentes por fila
+  
+  mutate(Combinacion = apply(., 1, function(x){
+    paste(names(.)[which(x == 1)], collapse = " + ")
+  })) %>%
+  group_by(Combinacion) %>%
+  summarise(Frecuencia = n()) %>%
+  arrange(desc(Frecuencia))
+
+# Obtener la combinación más frecuente
+
+top_4_combinaciones_sintomas <- tabla_combinaciones_sintomas %>% 
+  slice(1:4)
+
+# Generar objetos individuales para cada combinación
+
+for(i in 1:nrow(top_4_combinaciones_sintomas)){
+  combo_name_sintoma <- paste0("COMBINACION_SINTOMA", i)
+  assign(combo_name_sintoma, top_4_combinaciones_sintomas$Combinacion[i])
+  
+  freq_name_sintoma <- paste0("FRECUENCIA_SINTOMA", i)
+  assign(freq_name_sintoma, top_4_combinaciones_sintomas$Frecuencia[i])
+}
+

@@ -34,7 +34,7 @@ La vigilancia de virus respiratorios con potencial epidémico y pandémico —co
 
 En la República Argentina, la estrategia de vigilancia de IRAs se estructura en tres componentes, entre los cuales se destaca la vigilancia centinela. Esta última permite recolectar datos de manera sistemática y oportuna en un número limitado de establecimientos, seleccionados bajo criterios predefinidos.
 
-La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha estrategia viene implementándose desde la Semana Epidemiológica (SE) 18 del año 2024 en dos instituciones de referencia: el **Hospital Señor del Milagro**, ubicado en la ciudad de Salta, y el **Hospital San Vicente de Paul,** ubicado en la ciudad de Orán. **(Mapa N° 1)**
+La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha estrategia viene implementándose desde la semana epidemiológica (SE) 18 del año 2024 en dos instituciones de referencia: el **Hospital Señor del Milagro**, ubicado en la ciudad de Salta, y el **Hospital San Vicente de Paul,** ubicado en la ciudad de Orán. Cabe destacar que el Hospital Señor del Milagro es un establecimiento orientado a la atención de población adulta a partir de los 15 años y el Hospital San Vicente de Paul brinda atención tanto a población pediátrica como adultos. **(Mapa N° 1)**
 
 ```{r}
 #| label: LIBRERIAS
@@ -42,8 +42,6 @@ La provincia de Salta, forma parte de la **Red Argentina de UC-IRAG**, dicha est
 #| echo: false
 #| results: 'hide'
 #| warning: false
-
-
 source(here::here("SCRIPTS", "ACTIVACION DE PAQUETES.R"))
 source(here("SCRIPTS", "IMPORTAR BASE DE DATOS.R"))
 source(here("SCRIPTS", "EXPLORACION BASE Y NUEVO DATAFRAME.R"))
@@ -107,21 +105,17 @@ Para mayor información de la estrategia de vigilancia centinela de IRAG consult
 
 ### NOTA METODOLÓGICA
 
-En el presente informe se describe la situación epidemiológica de las infecciones respiratorias agudas graves (IRAG) correspondientes a la Unidad Centinela del Hospital Señor del Milagro. El análisis integra información proveniente de dos fuentes de notificación:
+En el presente informe se describe la situación epidemiológica de las Infecciones Respiratorias Agudas Graves (IRAG) correspondiente a la Unidad Centinela del Hospital Señor del Milagro. El análisis integra información proveniente de dos fuentes de notificación: (1) notificación nominal y (2) notificación agrupada.
 
-1.  **Notificación nominal**
+El procesamiento y análisis de los datos se efectuó con el software R, versión 4.4.1, empleando procedimientos reproducibles**.** El período evaluado abarca desde la SE `r SE_MIN_2025` hasta la SE `r SE_MAX_2025`, tomando como fecha de corte la última SE completa disponible al momento de la elaboración del informe.
 
-2.  **Notificación agrupada**
-
-El procesamiento de datos se realizó desde la semana epidemiológica (SE) `r SE_MIN_2025` **hasta la SE** `r SE_MAX_2025`, tomando como fecha de corte la última SE completa disponible al momento de la elaboración del informe.
-
-Cuando se emplearon gráficos específicos (por ejemplo, análisis de intersecciones mediante gráficos UpSet), se aplicaron criterios de depuración, tales como la exclusión de combinaciones con baja frecuencia para garantizar la estabilidad de las estimaciones.
+Cuando se aplicaron gráficos específicos —como el análisis de intersecciones mediante gráficos *UpSet*— se implementaron criterios de depuración orientados a garantizar la validez de las estimaciones, incluyendo la exclusión de combinaciones con baja frecuencia.
 
 ### SITUACIÓN EPIDEMIOLÓGICA
 
 Entre la semana epidemiológica `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año 2025, se registraron un total de `r TOTAL_CASOS` internaciones con diagnóstico de infeccion respiratoria aguda grave (IRAG e IRAG extendida). Del total, el `r PORCENTAJE_IRAG`% (n = `r FRECUENCIA_IRAG`) corresponden a IRAG y el `r PORCENTAJE_IRAG_EXT`% (n = `r FRECUENCIA_IRAG_EXT`) a IRAG extendida. En promedio, se notificaron `r PROMEDIO_SEMANAL_CASOS` casos por semana.
 
-El **Gráfico N° 1** se observa un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 14 y SE 23 con un pico en la SE `r SEMANA_PICO` en la cual se presentaron un total de `r CASOS_SEMANA_PICO` casos .
+El **Gráfico N°1** se observa un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 14 y SE 23 con un pico en la SE `r SEMANA_PICO` en la cual se presentaron un total de `r CASOS_SEMANA_PICO` casos .
 
 ###### GRÁFICO 1. Casos de IRAG e IRAG EXTENDIDA por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
@@ -140,7 +134,7 @@ El mayor número de casos de IRAG se observa en el grupo de `r GRUPO_MAYOR_IRAG`
 
 La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzando su valor más alto en el grupo de edad `r GRUPO_MAYOR_TASA` (`r paste0(MAYOR_TASA_LETALIDAD, "%")`), lo que refleja un riesgo significativamente mayor de desenlace fatal en adultos mayores **(Gráfico N°2**).
 
-###### GRÁFICO 2. Casos de IRAG e IRAG EXTENDIDA y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+###### GRÁFICO 2. Casos de IRAG e IRAG EXTENDIDA y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
 ```{r}
 #| label: CASOS-POR-GRUPO-EDAD
@@ -152,11 +146,13 @@ La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzand
 GRAFICO_INTERACTIVO_EDAD
 ```
 
-En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N° 3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
+### VIGILANCIA POR LABORATORIO
+
+En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N°3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
 
 Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en la semana 19, mientras que el virus sincicial respiratorio (VSR) mostró mayor circulación entre las semanas 20 y 27. Los casos de COVID-19 se concentran en las últimas semanas.
 
-###### GRÁFICO 3. Número de determinaciones de Influenza, VSR y SARS-Cov-2 en casos notificados de IRAG/IRAG extendida, por SE. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+###### GRÁFICO 3. Número de determinaciones de Influenza, VSR y SARS-Cov-2 en casos notificados de IRAG/IRAG extendida, por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
 ```{r}
 #| label: DETERMINACIONES-SE
@@ -181,7 +177,9 @@ En el **Gráfico N°4** se observa que la influenza predominó en la mayoría de
 GRAFICO_INTERACTIVO_VIRUS_EDAD
 ```
 
-El **Gráfico N° 5** presenta la frecuencia y combinación de signos y síntomas reportados en los casos de IRAG e IRAG extendida. Se observa que el síntoma más frecuente fue la tos, seguido por fiebre ≥38°C, disnea y malestar general, conformando el núcleo clínico predominante del cuadro respiratorio. Respecto de las combinaciones sintomáticas, la asociación más común estuvo conformada por tos, fiebre y disnea, presente en 6 pacientes.
+### CARACTERIZACIÓN CLÍNICA Y COMORBILIDADES
+
+El **Gráfico N°5** presenta un análisis de los signos y síntomas reportados en los casos de IRAG e IRAG extendida.
 
 ###### GRÁFICO 5. Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
@@ -197,10 +195,14 @@ GRAFICO_UPSET_SINTOMAS
 ```
 
 ::: {style="font-size:12px; color:#555; margin-top:8px;"}
-<i>\*Se excluyeron las intersecciones con frecuencia igual o menor a tres casos y aquellas que involucraban más de 6 combinaciones de síntomas.</i>
+<i>\*Se excluyeron las intersecciones con frecuencia igual o menor a tres casos y aquellas que involucraban más de 6 combinaciones de síntomas (649 casos).</i>
 :::
 
-###### Tabla 1. Casos de IRAG/IRAG extendida según comorbilidades más frecuentes. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+Se observa que la combinación sintomática más reportada fue la presencia conjunta de `r COMBINACION_SINTOMA1`, registrada en `r FRECUENCIA_SINTOMA1` pacientes, seguida de otras intersecciones frecuentes que incluyen `r COMBINACION_SINTOMA2` y `r COMBINACION_SINTOMA3` con `r FRECUENCIA_SINTOMA2` y `r FRECUENCIA_SINTOMA3` casos respectivamente.
+
+En el **Gráfico N°6** se muestra la frecuencia y combinación de comorbilidades en todos los casos registrados de IRAG e IRAG extendida.
+
+###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
 
 ```{r}
 #| label: UPSET-COMORBILIDADES
@@ -215,7 +217,11 @@ GRAFICO_UPSET_COMORBILIDADES
 <i>\*Se excluyeron las intersecciones de comorbilidades con frecuencia igual o menor a cinco casos.</i>
 :::
 
-###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida fallecidos. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_NOM`
+Se observa que la mayor frecuencia fue de pacientes `r COMBINACION_COMORB1` con un total de `r FRECUENCIA_COMORB1` casos, seguido de `r COMBINACION_COMORB2`, `r COMBINACION_COMORB3` y `r COMBINACION_COMORB4`.
+
+El **Gráfico N°7** muestra la frecuencia y combinación de comorbilidades en los casos fallecidos de IRAG e IRAG extendida que tuvieron laboratorio positivo para Influenza, Covid-19 y VSR.
+
+###### GRÁFICO 7. Frecuencia y combinaciones de comorbilidades registradas en casos  fallecidos de IRAG/IRAG extendida con laboratorio positivo. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_LABPOSITIVO`
 
 ```{r}
 #| label: COMORBILIDADES-FALLECIDOS
@@ -226,13 +232,13 @@ GRAFICO_UPSET_COMORBILIDADES
 GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
 ```
 
-::: {style="font-size:12px; color:#555; margin-top:8px;"}
-<i>\*Se excluyeron las intersecciones de comorbilidades con frecuencia igual o menor a un caso.</i>
-:::
+El análisis de comorbilidades evidencia que la totalidad de los pacientes fallecidos (n=`r TOTAL_DEFUNCIONES_LABPOSITIVO`)presentaba al menos una condición subyacente, lo que refuerza el rol de la multimorbilidad como determinante de gravedad en los cuadros de IRAG. La comorbilidad más frecuente fue la infección por `r DEFUNCION_1`, identificada en `r DEFUNCIONFRE_1` casos, seguida de `r DEFUNCION_2`, `r DEFUNCION_3` e `r DEFUNCION_4`, cada una presente en dos pacientes.
 
-El **Gráfico N° 7** muestra un incremento en la proporción de las internaciones por IRAG entre las semanas 13 y 25. Posteriormente, a partir de la semana 26, se observa un descenso gradual en la participación de casos de IRAG e IRAG extendida, mientras aumentan las internaciones por otras causas. En la mayoría de las semanas, la categoría “otras causas” mantiene un predominio relativo sobre las IRAG.
+### CARACTERIZACIÓN DE INTERNACIONES
 
-###### GRÁFICO 7. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES`
+El **Gráfico N°8** muestra un incremento en la proporción de las internaciones por IRAG entre las semanas 13 y 25. Posteriormente, a partir de la semana 26, se observa un descenso gradual en la participación de casos de IRAG e IRAG extendida, mientras aumentan las internaciones por otras causas. En la mayoría de las semanas, la categoría “otras causas” mantiene un predominio relativo sobre las IRAG.
+
+###### GRÁFICO 8. Distribución porcentual de internaciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES`
 
 ```{r}
 #| label: PROPORCION IRAG-IRAG EXTENDIDA-INTERNADOS
@@ -243,9 +249,9 @@ El **Gráfico N° 7** muestra un incremento en la proporción de las internacion
 GRAFICO_IRAG_INTERNADOS
 ```
 
-En el **Gráfico N° 8** se observa que las internaciones en la Unidad de Cuidados Intensivos (UCI) por casos de IRAG e IRAG extendida presentan una marcada variabilidad intersemanal, con semanas en las que el 100% de los pacientes internados corresponden a estos casos. A partir de la semana 29 se evidencia una disminución progresiva en la proporción de internaciones en UCI por IRAG, mientras aumentan las hospitalizaciones por otras causas. En conjunto, el gráfico muestra que las infecciones respiratorias representan una carga importante de internaciones en cuidados intensivos, con predominio de IRAG sobre IRAG extendida.
+En el **Gráfico N°9** se observa que las internaciones en la unidad de cuidados intensivos (UCI) por casos de IRAG e IRAG extendida presentan una marcada variabilidad intersemanal, con semanas en las que el 100% de los pacientes internados corresponden a estos casos. A partir de la semana 29 se evidencia una disminución progresiva en la proporción de internaciones en UCI por IRAG, mientras aumentan las hospitalizaciones por otras causas. En conjunto, el gráfico muestra que las infecciones respiratorias representan una carga importante de internaciones en cuidados intensivos, con predominio de IRAG sobre IRAG extendida.
 
-###### GRÁFICO 8. Distribución porcentual de internaciones en unidad de cuidados intensivos por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES_UCI`
+###### GRÁFICO 9. Distribución porcentual de internaciones en unidad de cuidados intensivos por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_INTERNACIONES_UCI`
 
 ```{r}
 #| label: PROPORCION IRAG UCI-IRAG EXTENDIDA UCI-INTERNADOS UCI
@@ -256,9 +262,9 @@ En el **Gráfico N° 8** se observa que las internaciones en la Unidad de Cuidad
 GRAFICO_IRAG_INTERNADOS_UCI
 ```
 
-El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA` y la SE `r SE_MAX_2025_AGRUPADA` fue de `r TOTAL_DEFUNCIONES`, de las cuales `r TOTAL_DEFUNCIONES_IRAG` fueron por IRAG y `r TOTAL_DEFUNCIONES_IRAG_EXT` fueron por IRAG extendida **(Gráfico N° 9)**.
+El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA` y la SE `r SE_MAX_2025_AGRUPADA` fue de `r TOTAL_DEFUNCIONES`, de las cuales `r TOTAL_DEFUNCIONES_IRAG` fueron por IRAG y `r TOTAL_DEFUNCIONES_IRAG_EXT` fueron por IRAG extendida **(Gráfico N°10)**.
 
-###### GRAFICO 9. Total de defunciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_DEFUNCIONES`
+###### GRAFICO 10. Distribución absoluta de defunciones por IRAG, IRAG extendida y otras causas. Desde SE `r SE_MIN_2025_AGRUPADA`/2025 hasta SE `r SE_MAX_2025_AGRUPADA`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_DEFUNCIONES`
 
 ```{r}
 #| label: DEFUNCIONES IRAG-IRAG EXTENDIDA-DEFUNCIONES TOTALES
@@ -268,3 +274,5 @@ El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA
 
 GRAFICO_IRAG_DEFUNCIONES
 ```
+
+Actualmente se continúa trabajando en la profundización del análisis epidemiológico y en la actualización permanente del presente informe, conforme se disponga de nueva información. Ante cualquier consulta o requerimiento adicional, puede comunicarse con el **Programa de Vigilancia Epidemiológica de la Dirección General de Coordinación Epidemiológica (DGCE) a través del correo electrónico: vigiepide\@gmail.com**
