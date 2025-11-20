@@ -108,7 +108,7 @@ GRAFICO_UPSET_SINTOMAS
 # Crear tabla de combinaciones
 
 tabla_combinaciones_sintomas <- base_sintomas_filtrados %>%
-  select(-ID) %>%                         # Quito ID
+  select(-Id) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
   # Crear strings con los sintomas presentes por fila
