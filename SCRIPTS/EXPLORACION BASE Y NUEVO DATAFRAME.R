@@ -54,6 +54,9 @@ DATA_UC_LISTA <- DATA_UC_IRAG %>%
   filter(
     ANIO_MIN_INTERNACION == "2025", CLASIFICACION_MANUAL != "Caso invalidado por epidemiología")
 
+#Modifico escritura de grupos de edad
+DATA_UC_LISTA <- DATA_UC_LISTA %>% mutate(EDAD_UC_IRAG = str_to_lower(EDAD_UC_IRAG))
+
 # Verificar cuantos valores faltantes hay
 
 sum(is.na(DATA_UC_LISTA$CUIDADO_INTENSIVO))#ver cuantos NA hay
