@@ -221,7 +221,7 @@ Se observa que la mayor frecuencia fue de pacientes `r COMBINACION_COMORB1` con 
 
 El **Gráfico N°7** muestra la frecuencia y combinación de comorbilidades en los casos fallecidos de IRAG e IRAG extendida que tuvieron laboratorio positivo para Influenza, Covid-19 y VSR.
 
-###### GRÁFICO 7. Frecuencia y combinaciones de comorbilidades registradas en casos  fallecidos de IRAG/IRAG extendida con laboratorio positivo. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_LABPOSITIVO`
+###### GRÁFICO 7. Frecuencia y combinaciones de comorbilidades registradas en casos fallecidos de IRAG/IRAG extendida con laboratorio positivo. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_DEFUNCIONES_LABPOSITIVO`
 
 ```{r}
 #| label: COMORBILIDADES-FALLECIDOS
