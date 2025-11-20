@@ -72,7 +72,7 @@ base_comorbilidades <- base_comorbilidades %>%
 #--------------------------------------------------------------------------------------------------
 
 base_comorbilidades_filtradas <- base_comorbilidades %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE)))
+  select(Id, where(~ any(. == 1, na.rm = TRUE)))
 
 
 base_comorbilidades_filtradas <- base_comorbilidades_filtradas %>%
