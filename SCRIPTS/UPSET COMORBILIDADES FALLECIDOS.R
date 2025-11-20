@@ -87,7 +87,7 @@ base_comorbilidades <- base_comorbilidades %>%
 #--------------------------------------------------------------------------------------------------
 
 base_comorbilidades_filtradas_def <- base_comorbilidades_defunciones %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE))) %>%
+  select(Id, where(~ any(. == 1, na.rm = TRUE))) %>%
   filter(if_any(everything(), ~ . == 1))
 
 # Nombres de comorbilidades presentes
