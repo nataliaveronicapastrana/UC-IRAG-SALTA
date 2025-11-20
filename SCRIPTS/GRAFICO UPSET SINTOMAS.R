@@ -33,21 +33,32 @@ base_sintomas <- base_sintomas %>% select(all_of(sintomas)) %>%
   mutate(ID = row_number()) %>%
   relocate(ID)
 
+#Renombro las columnas para cambiar los "-" por espacios
+base_sintomas_filtrados <- base_sintomas_filtrados %>% 
+  rename_with(~ str_replace_all(., "_", " "))%>%
+  rename_with(~ str_to_sentence(.,))
+
+#Corrijo casos particulares
+
+base_sintomas <- base_sintomas %>%
+  rename_with(~str_replace_all(.,"toracico","torácico") %>%
+                str_replace_all("Vomito", "Vómito") %>%
+                str_replace_all("may 38", "mayor a 38°") %>%
+                str_replace_all("menor 38", "menor a 38°") %>%
+                str_replace_all("Inyeccion", "Inyección") %>%
+                str_replace_all("Confusion", "Confusión"))
+
 #--------------------------------------------------------------------------------------------------
 #4-Selecciono aquellas columnas para las que haya al menos un registro == 1 (presencia sintomas)
 #--------------------------------------------------------------------------------------------------
 
 base_sintomas_filtrados <- base_sintomas %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE)))
+  select(Id, where(~ any(. == 1, na.rm = TRUE)))
 
 
 base_sintomas_filtrados <- base_sintomas_filtrados %>%
   filter(if_any(everything(), ~ . == 1))
 
-
-#Renombro las columnas para cambiar los "-" por espacios
-base_sintomas_filtrados <- base_sintomas_filtrados %>% 
-  rename_with(~ str_replace_all(., "_", " ")) 
 
 
 # Nombres de comorbilidades (intersecciones)
@@ -123,4 +134,31 @@ for(i in 1:nrow(top_4_combinaciones_sintomas)){
   freq_name_sintoma <- paste0("FRECUENCIA_SINTOMA", i)
   assign(freq_name_sintoma, top_4_combinaciones_sintomas$Frecuencia[i])
 }
+
+
+#--------------------------------------------------------------------------------------------------
+#                                         N GRAFICO SIGNOS Y SÍNTOMAS
+#--------------------------------------------------------------------------------------------------
+
+upset_sintomas <- upset_data(
+  base_sintomas_filtrados,
+  intersect = variables_sintomas
+)
+
+# vector con tamaños de cada barra
+observaciones_barra <- upset_sintomas$sizes$exclusive_intersection
+
+# obtener los nombres de las intersecciones
+nombres <- names(observaciones_barra)
+
+# obtener el grado 
+grado <- str_count(nombres, "-") + 1  
+
+# aplicar filtros igual que en el gráfico
+observaciones_barra_filtrado <- observaciones_barra[ observaciones_barra >= 4 & grado <= 6 ]
+
+# sumar valores
+suma_barras_sintomas <- sum(observaciones_barra_filtrado)
+
+
 
