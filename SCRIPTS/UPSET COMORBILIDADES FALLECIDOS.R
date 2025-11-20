@@ -59,7 +59,28 @@ base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
 
 # Renombro columnas (quita "_")
 base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
-  rename_with(~ str_replace_all(., "_", " "))
+  rename_with(~ str_replace_all(., "_", " "))%>%
+  rename_with(~str_to_sentence(.,))
+
+#Correcciones a casos específicos
+
+base_comorbilidades <- base_comorbilidades %>%
+  rename_with(~ str_replace_all(.,"Enf", "Enfermedad") %>%
+                str_replace_all("Vih", "VIH") %>%
+                str_replace_all("Dbp", "DBP") %>%
+                str_replace_all("men33sg", "menor a 33 SG") %>%
+                str_replace_all("33a36sg", "33 a 36 SG") %>%
+                str_replace_all("S down", "Síndrome de Down") %>%
+                str_replace_all("Cardiopatia congenita", "Cardiopatía congénita") %>%
+                str_replace_all("Desnutricion", "Desnutrición") %>%
+                str_replace_all("Hipertension", "Hipertensión") %>%
+                str_replace_all("reumatologica","reumatológica") %>%
+                str_replace_all("Cancer", "Cáncer") %>%
+                str_replace_all("neurologica cronica", " neurológica crónica") %>%
+                str_replace_all("cardiaca","cardíaca") %>%
+                str_replace_all ("hepatica", "hepática") %>%
+                str_replace_all("hipertension", "hipertensión"))
+
 
 #--------------------------------------------------------------------------------------------------
 # 4. Selecciono aquellas columnas con al menos un registro == 1 (presencia de comorbilidad)
