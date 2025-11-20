@@ -144,7 +144,7 @@ tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
 # Crear strings con las comorbilidades presentes por fila
   
   mutate(Combinacion = apply(., 1, function(x){
-    paste(names(.)[which(x == 1)], collapse = " + ")
+    paste(names(.)[which(x == 1)], collapse = ",")
   })) %>%
   group_by(Combinacion) %>%
   summarise(Frecuencia = n()) %>%
@@ -154,6 +154,9 @@ tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
 
 top_combinaciones_defunciones <- tabla_combinaciones_defunciones %>% 
   slice(1:4)
+
+top_combinaciones_defunciones <- top_combinaciones_defunciones %>%
+  mutate(Combinacion = str_to_lower(Combinacion))
 
 # Generar objetos individuales para cada combinación
 
