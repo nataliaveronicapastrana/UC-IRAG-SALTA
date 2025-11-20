@@ -64,7 +64,7 @@ base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
 
 #Correcciones a casos específicos
 
-base_comorbilidades <- base_comorbilidades %>%
+base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
   rename_with(~ str_replace_all(.,"Enf", "Enfermedad") %>%
                 str_replace_all("Vih", "VIH") %>%
                 str_replace_all("Dbp", "DBP") %>%
@@ -138,7 +138,7 @@ GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
 # Crear tabla de combinaciones
 
 tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
-  select(-ID) %>%                         # Quito ID
+  select(-Id) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
 # Crear strings con las comorbilidades presentes por fila
