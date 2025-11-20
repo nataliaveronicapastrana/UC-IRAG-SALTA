@@ -5,10 +5,10 @@
 # ----------------------------------------------------------------
 # ORDENAR LA VARIABLE GRUPO ETARIO
 # ----------------------------------------------------------------
-orden_edades <- c("15 a 19 Años","20 a 24 Años","25 a 29 Años", 
-                  "30 a 34 Años","35 a 39 Años","40 a 44 Años", 
-                  "45 a 49 Años","50 a 54 Años","55 a 59 Años",
-                  "60 a 64 Años","65 a 69 Años","70 a 74 Años","75 y más Años")
+orden_edades <- c("15 a 19 años","20 a 24 años","25 a 29 años", 
+                  "30 a 34 años","35 a 39 años","40 a 44 años", 
+                  "45 a 49 años","50 a 54 años","55 a 59 años",
+                  "60 a 64 años","65 a 69 años","70 a 74 años","75 y más años")
 
 DATA_UC_LISTA$EDAD_UC_IRAG <- factor(DATA_UC_LISTA$EDAD_UC_IRAG,
                                      levels = orden_edades,
