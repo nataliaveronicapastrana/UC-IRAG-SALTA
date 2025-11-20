@@ -34,7 +34,7 @@ base_sintomas <- base_sintomas %>% select(all_of(sintomas)) %>%
   relocate(ID)
 
 #Renombro las columnas para cambiar los "-" por espacios
-base_sintomas_filtrados <- base_sintomas_filtrados %>% 
+base_sintomas <- base_sintomas %>% 
   rename_with(~ str_replace_all(., "_", " "))%>%
   rename_with(~ str_to_sentence(.,))
 
