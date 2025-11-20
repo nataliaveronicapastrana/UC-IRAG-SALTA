@@ -117,7 +117,7 @@ Entre la semana epidemiológica `r SE_MIN_2025` y la SE `r SE_MAX_2025` del año
 
 El **Gráfico N°1** se observa un aumento sostenido de casos desde la SE 12 hasta alcanzar un período de máxima actividad concentrado entre la SE 14 y SE 23 con un pico en la SE `r SEMANA_PICO` en la cual se presentaron un total de `r CASOS_SEMANA_PICO` casos .
 
-###### GRÁFICO 1. Casos de IRAG e IRAG EXTENDIDA por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+###### GRÁFICO 1. Casos de IRAG e IRAG extendida por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
 ```{r}
 #| label: CASOS-POR-SE
@@ -134,7 +134,7 @@ El mayor número de casos de IRAG se observa en el grupo de `r GRUPO_MAYOR_IRAG`
 
 La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzando su valor más alto en el grupo de edad `r GRUPO_MAYOR_TASA` (`r paste0(MAYOR_TASA_LETALIDAD, "%")`), lo que refleja un riesgo significativamente mayor de desenlace fatal en adultos mayores **(Gráfico N°2**).
 
-###### GRÁFICO 2. Casos de IRAG e IRAG EXTENDIDA y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
+###### GRÁFICO 2. Casos de IRAG e IRAG extendida y tasa de letalidad por grupo de edad. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
 ```{r}
 #| label: CASOS-POR-GRUPO-EDAD
@@ -148,9 +148,9 @@ GRAFICO_INTERACTIVO_EDAD
 
 ### VIGILANCIA POR LABORATORIO
 
-En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N°3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
+En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N°3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a SARS-Cov-2.
 
-Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en la semana 19, mientras que el virus sincicial respiratorio (VSR) mostró mayor circulación entre las semanas 20 y 27. Los casos de COVID-19 se concentran en las últimas semanas.
+Influenza presentó su mayor actividad entre las semanas 13 y 21, con un pico en la semana 19, mientras que el virus sincicial respiratorio (VSR) mostró mayor circulación entre las semanas 20 y 27. Las determinaciones de SARS-Cov-2 se concentran en las últimas semanas.
 
 ###### GRÁFICO 3. Número de determinaciones de Influenza, VSR y SARS-Cov-2 en casos notificados de IRAG/IRAG extendida, por SE. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N= `r TOTAL_CASOS`
 
@@ -181,7 +181,7 @@ GRAFICO_INTERACTIVO_VIRUS_EDAD
 
 El **Gráfico N°5** presenta un análisis de los signos y síntomas reportados en los casos de IRAG e IRAG extendida.
 
-###### GRÁFICO 5. Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+###### GRÁFICO 5. Frecuencia y combinaciones de signos y síntomas registrados en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025`/2025 hasta SE `r SE_MAX_2025`/2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r suma_barras_sintomas`
 
 ```{r}
 #| label: SINTOMAS
@@ -202,7 +202,7 @@ Se observa que la combinación sintomática más reportada fue la presencia conj
 
 En el **Gráfico N°6** se muestra la frecuencia y combinación de comorbilidades en todos los casos registrados de IRAG e IRAG extendida.
 
-###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r TOTAL_CASOS`
+###### GRÁFICO 6. Frecuencia y combinaciones de comorbilidades registradas en casos de IRAG/IRAG extendida. Desde SE `r SE_MIN_2025` /2025 hasta SE `r SE_MAX_2025` /2025. UC IRAG-`r ESTABLECIMIENTO`. Provincia de Salta. N=`r suma_barras`
 
 ```{r}
 #| label: UPSET-COMORBILIDADES
@@ -261,6 +261,7 @@ En el **Gráfico N°9** se observa que las internaciones en la unidad de cuidado
 
 GRAFICO_IRAG_INTERNADOS_UCI
 ```
+
 
 El total de defunciones por todas las causas entre la SE `r SE_MIN_2025_AGRUPADA` y la SE `r SE_MAX_2025_AGRUPADA` fue de `r TOTAL_DEFUNCIONES`, de las cuales `r TOTAL_DEFUNCIONES_IRAG` fueron por IRAG y `r TOTAL_DEFUNCIONES_IRAG_EXT` fueron por IRAG extendida **(Gráfico N°10)**.
 
