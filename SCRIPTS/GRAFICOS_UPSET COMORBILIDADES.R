@@ -134,7 +134,7 @@ tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
 # Crear strings con las comorbilidades presentes por fila
   
   mutate(Combinacion = apply(., 1, function(x){
-    paste(names(.)[which(x == 1)], collapse = " + ")
+    paste(names(.)[which(x == 1)], collapse = ",")
   })) %>%
   group_by(Combinacion) %>%
   summarise(Frecuencia = n()) %>%
@@ -144,6 +144,9 @@ tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
 
 top_4_combinaciones_comorb <- tabla_combinaciones_comorb %>% 
   slice(1:4)
+
+top_4_combinaciones_comorb <-top_4_combinaciones_comorb %>%
+  mutate(Combinacion= str_to_lower(Combinacion))
 
 # Generar objetos individuales para cada combinación
 
