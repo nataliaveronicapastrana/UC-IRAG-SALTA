@@ -114,7 +114,7 @@ tabla_combinaciones_sintomas <- base_sintomas_filtrados %>%
   # Crear strings con los sintomas presentes por fila
   
   mutate(Combinacion = apply(., 1, function(x){
-    paste(names(.)[which(x == 1)], collapse = " + ")
+    paste(names(.)[which(x == 1)], collapse = ",")
   })) %>%
   group_by(Combinacion) %>%
   summarise(Frecuencia = n()) %>%
@@ -124,6 +124,9 @@ tabla_combinaciones_sintomas <- base_sintomas_filtrados %>%
 
 top_4_combinaciones_sintomas <- tabla_combinaciones_sintomas %>% 
   slice(1:4)
+
+top_4_combinaciones_sintomas <-top_4_combinaciones_sintomas %>%
+  mutate(Combinacion= str_to_lower(Combinacion))
 
 # Generar objetos individuales para cada combinación
 
