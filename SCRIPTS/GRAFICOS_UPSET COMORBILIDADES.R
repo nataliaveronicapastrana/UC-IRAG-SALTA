@@ -128,7 +128,7 @@ GRAFICO_UPSET_COMORBILIDADES
 # Crear tabla de combinaciones
 
 tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
-  select(-ID) %>%                         # Quito ID
+  select(-Id) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
 # Crear strings con las comorbilidades presentes por fila
