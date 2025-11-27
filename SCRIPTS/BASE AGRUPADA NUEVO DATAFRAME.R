@@ -2,7 +2,7 @@
 # MODIFICACION BASE DE DATOS AGRUPADA: RENOMBRAR COLUMNAS
 # ------------------------------------------------------------------------------
 
-# Vector con los nombres originales (como aparecen en tu dataframe)
+# Vector con los nombres originales 
 originales <- c("0 a 2 m", "3 a 5 m", "6 a 11 m", "12 a 23 m",
                 "2 a 4 años", "5 a 9 años", "10 a 14 años", "15 a 19 años",
                 "20 a 24 años", "25 a 29 años", "30 a 34 años", "35 a 39 años",

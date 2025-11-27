@@ -146,7 +146,7 @@ La tasa de letalidad muestra un comportamiento ascendente con la edad, alcanzand
 GRAFICO_INTERACTIVO_EDAD
 ```
 
-### VIGILANCIA POR LABORATORIO
+### CARACTERIZACIÓN DE DETERMINACIONES DE LABORATORIO
 
 En relación al perfil etiológico de los casos de IRAG por semana epidemiológica **(Gráfico N°3)** , se observa que la mayoría de los casos resultaron negativos para los virus estudiados. Entre los casos positivos, se registraron `r TOTAL_CASOS_POSITIVOS` casos, de los cuales `r TOTAL_CASOS_INFLUENZA` corresponden a influenza, `r TOTAL_CASOS_VSR` a VSR y `r TOTAL_CASOS_COVID` a COVID-19.
 
