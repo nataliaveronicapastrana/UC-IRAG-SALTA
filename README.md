@@ -26,7 +26,7 @@ La incorporación de herramientas automatizadas resulta fundamental para procesa
 
 ---
 
-<span style="font-size:18px; color:#0A5275;"><strong>Objetivos</strong></span>
+<span style="font-size:18px; color:#0A5275;"><strong>Objetivo</strong></span>
 
 <p style="text-align: justify;">
 Describir el perfil clínico, epidemiológico y de diagnóstico etiológico de las infecciones respiratorias agudas graves.
@@ -97,7 +97,7 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 <span style="font-size:18px; color:#0A5275;"><strong>Uso</strong></span>
 
 <p style="text-align: justify;">
-Para obtener el reporte automatizado se requiere instalar por única vez los siguientes paquetes en caso de no estar presentes:
+Para obtener el reporte automatizado se requiere instalar por única vez los siguientes paquetes en caso de no estar instalados:
 </p>
 
 `dplyr`, `ggplot2`, `lubridate`, `stringr`, `readxl`, `readr`,  
