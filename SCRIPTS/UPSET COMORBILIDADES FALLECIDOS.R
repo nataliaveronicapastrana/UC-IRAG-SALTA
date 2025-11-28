@@ -59,14 +59,35 @@ base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
 
 # Renombro columnas (quita "_")
 base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
-  rename_with(~ str_replace_all(., "_", " "))
+  rename_with(~ str_replace_all(., "_", " "))%>%
+  rename_with(~str_to_sentence(.,))
+
+#Correcciones a casos específicos
+
+base_comorbilidades_defunciones <- base_comorbilidades_defunciones %>%
+  rename_with(~ str_replace_all(.,"Enf", "Enfermedad") %>%
+                str_replace_all("Vih", "VIH") %>%
+                str_replace_all("Dbp", "DBP") %>%
+                str_replace_all("men33sg", "menor a 33 SG") %>%
+                str_replace_all("33a36sg", "33 a 36 SG") %>%
+                str_replace_all("S down", "Síndrome de Down") %>%
+                str_replace_all("Cardiopatia congenita", "Cardiopatía congénita") %>%
+                str_replace_all("Desnutricion", "Desnutrición") %>%
+                str_replace_all("Hipertension", "Hipertensión") %>%
+                str_replace_all("reumatologica","reumatológica") %>%
+                str_replace_all("Cancer", "Cáncer") %>%
+                str_replace_all("neurologica cronica", " neurológica crónica") %>%
+                str_replace_all("cardiaca","cardíaca") %>%
+                str_replace_all ("hepatica", "hepática") %>%
+                str_replace_all("hipertension", "hipertensión"))
+
 
 #--------------------------------------------------------------------------------------------------
 # 4. Selecciono aquellas columnas con al menos un registro == 1 (presencia de comorbilidad)
 #--------------------------------------------------------------------------------------------------
 
 base_comorbilidades_filtradas_def <- base_comorbilidades_defunciones %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE))) %>%
+  select(Id, where(~ any(. == 1, na.rm = TRUE))) %>%
   filter(if_any(everything(), ~ . == 1))
 
 # Nombres de comorbilidades presentes
@@ -117,13 +138,13 @@ GRAFICO_UPSET_COMORBILIDADES_FALLECIDOS
 # Crear tabla de combinaciones
 
 tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
-  select(-ID) %>%                         # Quito ID
+  select(-Id) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
 # Crear strings con las comorbilidades presentes por fila
   
   mutate(Combinacion = apply(., 1, function(x){
-    paste(names(.)[which(x == 1)], collapse = " + ")
+    paste(names(.)[which(x == 1)], collapse = ",")
   })) %>%
   group_by(Combinacion) %>%
   summarise(Frecuencia = n()) %>%
@@ -133,6 +154,9 @@ tabla_combinaciones_defunciones <- base_comorbilidades_filtradas_def %>%
 
 top_combinaciones_defunciones <- tabla_combinaciones_defunciones %>% 
   slice(1:4)
+
+top_combinaciones_defunciones <- top_combinaciones_defunciones %>%
+  mutate(Combinacion = str_to_lower(Combinacion))
 
 # Generar objetos individuales para cada combinación
 
