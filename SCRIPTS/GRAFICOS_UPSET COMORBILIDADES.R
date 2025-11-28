@@ -39,10 +39,32 @@ base_comorbilidades <- base_comorbilidades %>% select(all_of(comorbilidades)) %>
   relocate(ID)
 
 
-#Renombro las columnas para cambiar los "-" por espacios
+#Renombro las columnas para cambiar los "-" por espacios y aplicar mayúscula solo a la 
+#primera palabra
 
 base_comorbilidades <- base_comorbilidades %>% 
-  rename_with(~ str_replace_all(., "_", " ")) 
+  rename_with(~ str_replace_all(., "_", " ")) %>%
+  rename_with(~str_to_sentence(.,))
+
+#Correcciones a casos específicos
+
+base_comorbilidades <- base_comorbilidades %>%
+  rename_with(~ str_replace_all(.,"Enf", "Enfermedad") %>%
+                str_replace_all("Vih", "VIH") %>%
+                str_replace_all("Dbp", "DBP") %>%
+                str_replace_all("men33sg", "menor a 33 SG") %>%
+                str_replace_all("33a36sg", "33 a 36 SG") %>%
+                str_replace_all("S down", "Síndrome de Down") %>%
+                str_replace_all("Cardiopatia congenita", "Cardiopatía congénita") %>%
+                str_replace_all("Desnutricion", "Desnutrición") %>%
+                str_replace_all("Hipertension", "Hipertensión") %>%
+                str_replace_all("reumatologica","reumatológica") %>%
+                str_replace_all("Cancer", "Cáncer") %>%
+                str_replace_all("neurologica cronica", " neurológica crónica") %>%
+                str_replace_all("cardiaca","cardíaca") %>%
+                str_replace_all ("hepatica", "hepática") %>%
+                str_replace_all("hipertension", "hipertensión"))
+
 
 
 #--------------------------------------------------------------------------------------------------
@@ -50,7 +72,7 @@ base_comorbilidades <- base_comorbilidades %>%
 #--------------------------------------------------------------------------------------------------
 
 base_comorbilidades_filtradas <- base_comorbilidades %>%
-  select(ID, where(~ any(. == 1, na.rm = TRUE)))
+  select(Id, where(~ any(. == 1, na.rm = TRUE)))
 
 
 base_comorbilidades_filtradas <- base_comorbilidades_filtradas %>%
@@ -106,13 +128,13 @@ GRAFICO_UPSET_COMORBILIDADES
 # Crear tabla de combinaciones
 
 tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
-  select(-ID) %>%                         # Quito ID
+  select(-Id) %>%                         # Quito ID
   mutate(across(everything(), as.numeric)) %>% 
   
 # Crear strings con las comorbilidades presentes por fila
   
   mutate(Combinacion = apply(., 1, function(x){
-    paste(names(.)[which(x == 1)], collapse = " + ")
+    paste(names(.)[which(x == 1)], collapse = ",")
   })) %>%
   group_by(Combinacion) %>%
   summarise(Frecuencia = n()) %>%
@@ -122,6 +144,9 @@ tabla_combinaciones_comorb <- base_comorbilidades_filtradas %>%
 
 top_4_combinaciones_comorb <- tabla_combinaciones_comorb %>% 
   slice(1:4)
+
+top_4_combinaciones_comorb <-top_4_combinaciones_comorb %>%
+  mutate(Combinacion= str_to_lower(Combinacion))
 
 # Generar objetos individuales para cada combinación
 
@@ -133,6 +158,24 @@ for(i in 1:nrow(top_4_combinaciones_comorb)){
   assign(freq_name_comorb, top_4_combinaciones_comorb$Frecuencia[i])
 }
 
+
+#--------------------------------------------------------------------------------------------------
+# N GRÁFICO DE COMORBILIDADES
+#--------------------------------------------------------------------------------------------------
+
+upset_comorbilidades <- upset_data(
+  base_comorbilidades_filtradas,
+  intersect = variables_comorbilidades
+)
+
+# vector con tamaños de cada barra
+observaciones_barra_comorb <- upset_comorbilidades$sizes$exclusive_intersection
+
+# filtrar las barras que aparecen en el gráfico (≥ 6)
+observaciones_barra_comorb_filtrado <- observaciones_barra_comorb[observaciones_barra_comorb>= 6]
+
+# sumar todas las barras violetas
+suma_barras <- sum(observaciones_barra_comorb_filtrado)
 
 
 
