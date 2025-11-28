@@ -108,7 +108,7 @@ Para obtener el reporte automatizado se requiere instalar por única vez los sig
 `ComplexUpset`, `here`.
 
 <p style="text-align: justify;">
-Posteriormente, deberá renderizarse el archivo <strong>.qmd</strong>.
+Posteriormente, deberá agregar en la carpeta TEMPLATES la base de datos correspondiente y finalmente renderizarse el archivo <strong>.qmd</strong>.
 </p>
 
 ---
