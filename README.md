@@ -56,7 +56,7 @@ La caja de herramientas UC-IRAG-SALTA fue desarrollada con el propósito de prop
 - **TEMPLATES**  
   - Carpeta **CSS** con `estilo.css` y logos institucionales.  
   - Archivos `.xlsx` con insumos (por ejemplo, base para mapas).  
-- **ANALISIS SITUACION IRAG MILAGRO**: archivos `.html` y `.qmd`.  
+- **ARCHIVOS** `.html` y `.qmd`.  
 - **README.md**: Descripción del proyecto, estructura, instrucciones y objetivos.  
 - **UC-IRAG-SALTA.Rproj**: Proyecto de R.  
 - **encabezado_documento.html**: Encabezado del reporte.
