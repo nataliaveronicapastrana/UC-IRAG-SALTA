@@ -73,7 +73,7 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 
 <span style="font-size:18px; color:#0A5275;"><strong>Descarga de la caja de herramientas</strong></span>
 
-### Opción 1: Descargar sin usar GitHub (usuarios sin cuenta)
+### <span style="font-size:18px; color:#0A5275;"><strong>Opción 1: Descargar sin usar GitHub (usuarios sin cuenta)</strong></span>
 1. Ingresar al repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA  
 2. Hacer clic en **Code (verde)**.  
 3. Seleccionar **Download ZIP**.  
