@@ -30,12 +30,11 @@
 ## Productos esperados: Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave (UC-IRAG)”
 ## Descarga de la caja de herramientas:
 ## Opción 1: Descargar sin usar GitHub (recomendado para usuarios sin cuenta)
-##   1.Ingresar al repositorio:
-##   2.https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA
-##   3.Hacer clic en el botón Code (verde).
-##   4.Seleccionar Download ZIP.
-##   5.Descomprimir el archivo en la computadora.
-##   6.Esto permite acceder a todos los archivos, pero no permite hacer commit ni sincronizar cambios.
+##   1.Ingresar al repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA
+##   2.Hacer clic en el botón Code (verde).
+##   3.Seleccionar Download ZIP.
+##   4.Descomprimir el archivo en la computadora.
+##   5.Esto permite acceder a todos los archivos, pero no permite hacer commit ni sincronizar cambios.
 
 ## Opción 2: Acceder con cuenta de GitHub
 ##   1.Ingresar a https://github.com y realizar login.
@@ -46,9 +45,8 @@
 
 ##   1.Abrir RStudio.
 ##   2.Ir a: File → New Project → Version Control → Git
-##   3.Pegar la URL del repositorio:
-##   4.https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA.git
-##   5.Seleccionar la carpeta local donde se guardará el proyecto.
+##   3.Pegar la URL del repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA.git
+##   4.Seleccionar la carpeta local donde se guardará el proyecto.
 ## RStudio creará el proyecto y habilitará la pestaña Git para realizar pull, push, commit y gestionar versiones.
 
 ## Uso de la caja: Para la obtención del reporte automatizado se requiere realizar en primera instancia y por única vez la instalación de los siguientes paquetes en caso de que no se encuentren instalados: dplyr; ggplot2; lubridate; stringr; readxl; readr; writexl; highcharter; tidyr; tidyverse; mapview; leaflet; geoAr; gt; htmltools; devtools; ComplexUpset; here
