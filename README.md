@@ -10,10 +10,24 @@
 ### La incorporación de herramientas automatizadas resulta fundamental para procesar, analizar y visualizar los datos de manera oportuna, estandarizada y reproducible, fortaleciendo así la vigilancia epidemiológica y respaldando la toma de decisiones basada en evidencia.
 
 
-## Objetivos: 
-## Propósito: 
+## Objetivos:
+### Describir el perfil clínico, epidemiológico y de diagnóstico etiológico de las infecciones respiratorias agudas graves.
+
+## Propósito: La caja de herramientas UC-IRAG-SALTA fue desarrollada con el propósito de proporcionar un marco metodológico estandarizado y reproducible que pueda ser utilizado tanto por las Unidades Centinela de la provincia para generar informes periódicos de manera oportuna, regular y consistente.
+
 ## Destinatarios: Unidad centinela de IRAG Hospital Señor del Milagro- Unidad centinela de IRAG Hospital San Vicente de Paul
+
 ## Contenido de la caja de herramientas: 
+### Carpeta "DOCUMENTACION ADICIONAL": Contiene el Plan de Análisis UC-IRAG y la Guía Operativa UC-IRAG.
+### Carpeta "SCRIPTS": Contiene los archivos .R necesarios para la ejecución del reporte automatizado.
+### Carpeta "TEMPLATES": Contiene:
+#### • Carpeta "CSS": incluye el archivo estilo.css y los logos institucionales.
+#### • Archivos .xlsx con los insumos necesarios para el análisis (por ejemplo, base para mapas).
+### Archivos de “ANALISIS SITUACION IRAG MILAGRO”: Incluye los archivos del reporte en formato .html y .qmd.
+### Archivo "README.md": Incluye la descripción del proyecto, los objetivos, los requisitos, instrucciones básicas de uso y la explicación de la estructura del repositorio.
+### Archivo "UC-IRAG-SALTA.Rproj": Proyecto de R.
+### Archivo "encabezado_documento.html": Encabezado utilizado para la presentación del reporte.
+
 ## Productos esperados: 
 ## Descarga de la caja de herramientas:
 ## Uso de la caja: 
