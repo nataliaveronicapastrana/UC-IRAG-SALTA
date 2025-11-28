@@ -28,7 +28,7 @@
 ### Archivo "UC-IRAG-SALTA.Rproj": Proyecto de R.
 ### Archivo "encabezado_documento.html": Encabezado utilizado para la presentación del reporte.
 
-## Productos esperados: 
+## Productos esperados: Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave (UC-IRAG)”
 ## Descarga de la caja de herramientas:
 ## Uso de la caja: 
 ## Anexo: 
