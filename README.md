@@ -1,6 +1,6 @@
-<span style="font-size:22px; color:#103A5C; font-weight:bold;">
+
 **UNIDAD CENTINELA DE INFECCIÓN RESPIRATORIA AGUDA GRAVE (UC-IRAG)**
-</span>
+
 
 ---
 
