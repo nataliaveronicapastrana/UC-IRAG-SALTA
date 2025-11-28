@@ -94,7 +94,7 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 
 ---
 
-<span style="font-size:18px; color:#0A5275;"><strong>Uso</strong></span>
+<span style="font-size:18px; color:#0A5275;"><strong>Uso de la caja</strong></span>
 
 <p style="text-align: justify;">
 Para obtener el reporte automatizado se requiere instalar por única vez los siguientes paquetes en caso de no estar instalados:
