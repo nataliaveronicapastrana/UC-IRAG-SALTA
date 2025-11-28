@@ -130,8 +130,7 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 <span style="font-size:18px; color:#0A5275;"><strong>Descarga de la caja de herramientas</strong></span>
 
 ### Opción 1: Descargar sin usar GitHub (usuarios sin cuenta)
-1. Ingresar al repositorio:  
-   https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA  
+1. Ingresar al repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA  
 2. Hacer clic en **Code (verde)**.  
 3. Seleccionar **Download ZIP**.  
 4. Descomprimir.  
@@ -144,5 +143,35 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 - Si tiene permisos, podrá: clonar, crear ramas y enviar *pull requests*
 
 ### Opción 3: Clonar desde RStudio (recomendado para desarrollo)
+- Ir a: File → New Project → Version Control → Git
+- Pegar la URL del repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA.git
+- Seleccionar carpeta local  
+- RStudio creará el proyecto y habilitará la pestaña Git  
 
+---
+
+<span style="font-size:18px; color:#0A5275;"><strong>Uso</strong></span>
+
+<p style="text-align: justify;">
+Para obtener el reporte automatizado se requiere instalar por única vez los siguientes paquetes en caso de no estar presentes:
+</p>
+
+`dplyr`, `ggplot2`, `lubridate`, `stringr`, `readxl`, `readr`,  
+`writexl`, `highcharter`, `tidyr`, `tidyverse`, `mapview`,  
+`leaflet`, `geoAr`, `gt`, `htmltools`, `devtools`,  
+`ComplexUpset`, `here`.
+
+<p style="text-align: justify;">
+Posteriormente, deberá renderizarse el archivo <strong>.qmd</strong>.
+</p>
+
+---
+
+<span style="font-size:18px; color:#0A5275;"><strong>Anexo</strong></span>
+
+<p style="text-align: justify;">
+<strong>Vigilancia Centinela de Infección Respiratoria Aguda Grave (IRAG) – Guía Operativa 2024</strong>, Dirección de Epidemiología.  
+Disponible en:  
+https://www.argentina.gob.ar/sites/default/files/guia-uc-irag-vff.pdf
+</p>
 
