@@ -21,8 +21,8 @@
 ### Carpeta "DOCUMENTACION ADICIONAL": Contiene el Plan de Análisis UC-IRAG y la Guía Operativa UC-IRAG.
 ### Carpeta "SCRIPTS": Contiene los archivos .R necesarios para la ejecución del reporte automatizado.
 ### Carpeta "TEMPLATES": Contiene:
-#### • Carpeta "CSS": incluye el archivo estilo.css y los logos institucionales.
-#### • Archivos .xlsx con los insumos necesarios para el análisis (por ejemplo, base para mapas).
+### • Carpeta "CSS": incluye el archivo estilo.css y los logos institucionales.
+### • Archivos .xlsx con los insumos necesarios para el análisis (por ejemplo, base para mapas).
 ### Archivos de “ANALISIS SITUACION IRAG MILAGRO”: Incluye los archivos del reporte en formato .html y .qmd.
 ### Archivo "README.md": Incluye la descripción del proyecto, los objetivos, los requisitos, instrucciones básicas de uso y la explicación de la estructura del repositorio.
 ### Archivo "UC-IRAG-SALTA.Rproj": Proyecto de R.
