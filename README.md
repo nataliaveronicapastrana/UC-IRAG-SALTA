@@ -5,7 +5,7 @@
 ---
 
 <span style="font-size:14px; color:#555;">
-<strong>Autores:</strong> Lic. Natalia Pastrana – Lic. Cinthya Villagomez
+<strong>Autores:</strong> Lic. Natalia Pastrana – Lic. Cynthia Villagomez
 </span>
 
 ---
