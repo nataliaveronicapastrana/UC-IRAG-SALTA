@@ -75,24 +75,13 @@ Reporte automatizado “Unidad Centinela de Infección Respiratoria Aguda Grave 
 
 <span style="font-size:18px; color:#0A5275;"><strong>Descarga de la caja de herramientas</strong></span>
 
-### <span style="font-size:18px; color:#0A5275;"><strong>Opción 1: Descargar sin usar GitHub (usuarios sin cuenta)</strong></span>
+### <span style="font-size:18px; color:#0A5275;"><strong> Descargar sin usar GitHub (usuarios sin cuenta)</strong></span>
 1. Ingresar al repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA  
 2. Hacer clic en **Code (verde)**.  
 3. Seleccionar **Download ZIP**.  
 4. Descomprimir.  
 5. Acceder a todos los archivos.  
 *(No permite commits ni sincronización de cambios.)*
-
-### Opción 2: Acceder con cuenta GitHub
-- Ingresar a https://github.com  
-- Buscar **UC-IRAG-SALTA** o acceder al enlace directo  
-- Si tiene permisos, podrá: clonar, crear ramas y enviar *pull requests*
-
-### Opción 3: Clonar desde RStudio (recomendado para desarrollo)
-- Ir a: File → New Project → Version Control → Git
-- Pegar la URL del repositorio: https://github.com/nataliaveronicapastrana/UC-IRAG-SALTA.git
-- Seleccionar carpeta local  
-- RStudio creará el proyecto y habilitará la pestaña Git  
 
 ---
 
