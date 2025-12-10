@@ -57,7 +57,7 @@ La caja de herramientas UC-IRAG-SALTA fue desarrollada con el propósito de prop
 - **SCRIPTS**: Archivos `.R` necesarios para el reporte automatizado.  
 - **TEMPLATES**  
   - Carpeta **CSS** con `estilo.css` y logos institucionales.  
-  - Archivos `.xlsx` con insumos (por ejemplo, base para mapas).  
+  - Archivos `.xlsx` con insumos (por ejemplo, base de datos para mapas).  
 - **ARCHIVOS** `.html` y `.qmd`.  
 - **README.md**: Descripción del proyecto, estructura, instrucciones y objetivos.  
 - **UC-IRAG-SALTA.Rproj**: Proyecto de R.  
